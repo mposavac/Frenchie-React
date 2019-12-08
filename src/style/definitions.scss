@@ -1,0 +1,26 @@
+//FONT IMPORT
+
+$colors: (
+  primary: #fff,
+  secondary: #000,
+  thirdColor: #de4e
+);
+
+@function color($color) {
+  @return map-get($colors, $color);
+}
+
+$tablet: 850px;
+$mobile: 400px;
+
+@mixin mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

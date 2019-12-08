@@ -1,0 +1,208 @@
+@import "./definitions.scss";
+
+.home {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: url("../assets/architecture-buildings-city-373893.jpg")
+    center/cover no-repeat;
+
+  /* &::after {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+  }*/
+  .card-holder {
+    position: absolute;
+    top: -113px;
+    left: -113px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-column-gap: 0.4rem;
+    grid-row-gap: 0.4rem;
+    transform: rotate(45deg);
+    perspective: 800px;
+    @include mobile {
+      display: flex;
+      position: fixed;
+      flex-direction: row;
+      top: unset;
+      bottom: 0;
+      left: -96px;
+      transform: rotate(0);
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      justify-content: space-evenly;
+      align-items: flex-end;
+    }
+    .container {
+      //position: relative;
+      width: 16vw;
+      height: 16vw;
+      transform-origin: right;
+      background: color(primary);
+      border: 2px color(primary) solid;
+      text-align: center;
+      //overflow: hidden;
+      transform: rotateY(90deg);
+      opacity: 0;
+      animation: 0.5s ease forwards;
+      flex: 1 1 0;
+      @include mobile {
+        &:nth-child(21) {
+          order: 3;
+        }
+        &:nth-child(9) {
+          order: 1;
+        }
+        &:nth-child(5) {
+          height: 125px;
+          flex-basis: 25%;
+          order: 2;
+        }
+        width: unset;
+        height: 100px;
+      }
+      &:nth-child(4),
+      &:nth-child(6),
+      &:nth-child(10),
+      &:nth-child(13),
+      &:nth-child(16),
+      &:nth-child(19) {
+        animation-name: opacityAnimation1, unfold;
+        @include mobile {
+          display: none;
+        }
+      }
+
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(11),
+      &:nth-child(12),
+      &:nth-child(15),
+      &:nth-child(18),
+      &:nth-child(20) {
+        animation-name: opacityAnimation2, unfold;
+        @include mobile {
+          display: none;
+        }
+      }
+
+      &:nth-child(3),
+      &:nth-child(7),
+      &:nth-child(8),
+      &:nth-child(14),
+      &:nth-child(17) {
+        animation-name: opacityAnimation3, unfold;
+        background: none;
+        @include mobile {
+          display: none;
+        }
+      }
+
+      &:nth-child(5),
+      &:nth-child(9),
+      &:nth-child(21) {
+        animation-name: opacityAnimation4, unfold;
+      }
+
+      .menu {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 135%;
+        height: 135%;
+        padding: 2.5rem;
+        box-sizing: border-box;
+        clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+        color: color(scondary);
+        opacity: 0;
+        font-size: 1.25rem;
+        animation: fadingIn 0.4s ease-out forwards;
+        cursor: pointer;
+        i {
+          display: block;
+        }
+        @include mobile {
+          display: block;
+          position: relative;
+          top: 50%;
+          width: 100%;
+          height: unset;
+          font-size: 1rem;
+          line-height: 1.3rem;
+          padding: 5px;
+          clip-path: none;
+          animation: fadingInMobile 0.4s ease-out forwards;
+        }
+      }
+      .menu.first-menu {
+        animation-delay: 2.3s;
+      }
+      .menu.second-menu {
+        animation-delay: 1.8s;
+      }
+      .menu.third-menu {
+        animation-delay: 2.1s;
+      }
+    }
+    .container.menu-container {
+      &::after {
+        content: "";
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        opacity: 0;
+        visibility: hidden;
+        background: rgba(255, 255, 255, 1);
+        transition: 0.8s;
+      }
+    }
+    .container.menu-container.transition::after {
+      opacity: 1;
+      visibility: visible;
+    }
+    .container.menu-container.transition:nth-child(5)::after {
+      top: -25.4vw;
+      right: 1.9vw;
+      height: calc(100% * 6);
+      width: calc(100% * 6);
+    }
+    .container.menu-container.transition:nth-child(9)::after {
+      transform: scale(6) translate(35px, 4px);
+    }
+    .container.menu-container.transition:nth-child(21)::after {
+      top: -83.4vw;
+      right: -95.1vw;
+      height: 200vw;
+      width: 200vw;
+    }
+    .container.menu-container.transition ~ .container .menu {
+      animation: opacityAnimation4, unfold 0.5 ease-out backwards;
+    }
+  }
+}
+
+@for $i from 1 through 7 {
+  $j: 8 - $i + 1;
+  @for $z from 0 through 5 {
+    $a: $j * 3;
+    @if ($a - $z) < 22 {
+      @if $a % 6 == 0 {
+        .home .container:nth-child(#{$a - $z}) {
+          animation-delay: #{$z * 0.25 + 0.5}s;
+        }
+      }
+    }
+  }
+}
+
+@import "./addForm.scss";
+@import "./animations.scss";
