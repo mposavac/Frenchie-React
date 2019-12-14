@@ -1,13 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import Routing from "./Routing";
+import Routing from "./routes/Routing";
 
-import { createStore } from "redux";
-import rootReducer from "./store/rootReducer";
 import { Provider } from "react-redux";
-
-const store = createStore(rootReducer);
+import { store } from "./store/config";
 
 ReactDOM.render(
   <Provider store={store}>

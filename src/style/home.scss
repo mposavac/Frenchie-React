@@ -169,18 +169,11 @@
       opacity: 1;
       visibility: visible;
     }
-    .container.menu-container.transition:nth-child(5)::after {
-      top: -25.4vw;
-      right: 1.9vw;
-      height: calc(100% * 6);
-      width: calc(100% * 6);
-    }
-    .container.menu-container.transition:nth-child(9)::after {
-      transform: scale(6) translate(35px, 4px);
-    }
+    .container.menu-container.transition:nth-child(5)::after,
+    .container.menu-container.transition:nth-child(9)::after,
     .container.menu-container.transition:nth-child(21)::after {
-      top: -83.4vw;
-      right: -95.1vw;
+      top: -100vw;
+      right: -100vw;
       height: 200vw;
       width: 200vw;
     }
@@ -205,4 +198,6 @@
 }
 
 @import "./addForm.scss";
+@import "./quiz.scss";
+@import "./overview.scss";
 @import "./animations.scss";

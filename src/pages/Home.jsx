@@ -9,17 +9,21 @@ function Home() {
 
   const handleAnimation = e => {
     setAnimateIndex(parseInt(e.target.id));
-    console.log(animateIndex);
-    setTimeout(() => setRedirecting(true), 800);
+    let redirectingTo;
+    if (e.target.id === "1") redirectingTo = "/quiz";
+    else if (e.target.id === "2") redirectingTo = "/overview";
+    else if (e.target.id === "3") redirectingTo = "/add";
+    setTimeout(() => setRedirecting(redirectingTo), 800);
   };
 
   const returnContainers = numOfContainers => {
     let output = [];
     for (let i = 0; i < numOfContainers; i++) {
-      output.push(<div className="container" />);
+      output.push(<div key={i * numOfContainers} className="container" />);
     }
     return output;
   };
+
   return (
     <div className="home">
       <div className="card-holder">
@@ -60,7 +64,7 @@ function Home() {
           </div>
         </div>
       </div>
-      {redirecting && <Redirect to="/add" />}
+      {redirecting && <Redirect to={redirecting} />}
     </div>
   );
 }

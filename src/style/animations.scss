@@ -78,3 +78,51 @@
     opacity: 0;
   }
 }
+
+@keyframes sizeInAdd {
+  from {
+    transform: rotate(0deg) scale(5);
+    height: 100%;
+    width: 100%;
+  }
+  to {
+    top: -25.4vw;
+    right: 22.9vw;
+    transform: rotate(-45deg) scale(1);
+    height: calc(16vw * 6);
+    width: calc(16vw * 6);
+  }
+}
+@keyframes sizeInQuiz {
+  from {
+    transform: rotate(0deg) scale(5);
+    height: 100%;
+    width: 100%;
+  }
+  to {
+    top: -25.4vw;
+    left: 22.9vw;
+    transform: rotate(-45deg) scale(1);
+    height: calc(16vw * 6);
+    width: calc(16vw * 6);
+  }
+}
+@keyframes sizeInOverview {
+  from {
+    transform: rotate(0deg) scale(5);
+    height: 100%;
+    width: 100%;
+  }
+  to {
+    top: -50vh;
+    right: 0;
+    transform: rotate(-45deg) scale(1);
+    height: calc(16vw * 6);
+    width: calc(16vw * 6);
+  }
+}
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}

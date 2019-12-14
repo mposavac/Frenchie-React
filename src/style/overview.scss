@@ -1,0 +1,13 @@
+.overview {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url("../assets/architecture-buildings-city-373893.jpg")
+    center/cover no-repeat;
+  overflow: hidden;
+  .overview-container {
+    background: color(primary);
+    animation: sizeInOverview 2.5s forwards ease;
+    position: absolute;
+  }
+}
