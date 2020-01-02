@@ -5,9 +5,109 @@
   background: url("../assets/architecture-buildings-city-373893.jpg")
     center/cover no-repeat;
   overflow: hidden;
-  .quiz-container {
-    background: color(primary);
+  .quiz-square-backgorund {
+    background: color(white);
     animation: sizeInQuiz 2.5s forwards ease;
     position: absolute;
+    height: 100%;
+    width: 100%;
+  }
+
+  form {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 45%;
+  }
+  .btn-start {
+    position: relative;
+    left: 50%;
+    transform: translateY(-50%);
+  }
+
+  .question-box {
+    text-align: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    height: 60vh;
+    width: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    border-radius: 1em;
+    h2 {
+      padding: 0.75em 0;
+    }
+    .questions-container {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 10px;
+      grid-row-gap: 10px;
+      justify-content: center;
+      align-items: center;
+      margin-top: 5vh;
+      p.question {
+        background: color;
+        width: 75%;
+        height: 5em;
+        line-height: 5em;
+        margin: auto;
+        border: 1px color(secondary) solid;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+      .correct {
+        background: color(thirdColor);
+      }
+      .incorrect {
+        background: color(red);
+      }
+    }
+
+    .question-recap {
+      position: absolute;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      top: -100%;
+      width: 100%;
+      height: 100%;
+      background: color(red);
+      animation: slideInTop 0.5s forwards 1s;
+      animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+      p {
+        font-size: 1.5em;
+        margin: 0.5em auto;
+      }
+    }
+
+    button {
+      position: absolute;
+      bottom: 5vh;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 2px color(thirdColor) solid;
+      transition: all 350ms ease-in-out;
+      width: 6em;
+      height: 2.5em;
+      outline: none;
+      cursor: pointer;
+      background-color: transparent;
+      text-decoration: none;
+      text-align: center;
+      text-transform: uppercase;
+      border-radius: 5px;
+      z-index: 100;
+      &:hover {
+      }
+    }
+  }
+
+  .credits {
+    position: absolute;
+    bottom: 0.5em;
+    right: 1em;
+    font-size: 0.9em;
   }
 }

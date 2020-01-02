@@ -1,9 +1,12 @@
-//FONT IMPORT
+@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
 
 $colors: (
-  primary: #fff,
-  secondary: #000,
-  thirdColor: #de4e
+  primary: #e3e7d3,
+  secondary: #12355b,
+  thirdColor: #23395b,
+  white: #fff,
+  black: #001514,
+  red: #ff0000
 );
 
 @function color($color) {
@@ -23,4 +26,8 @@ $mobile: 400px;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  font-family: "Muli", sans-serif;
 }
