@@ -6,11 +6,50 @@
     center/cover no-repeat;
   overflow: hidden;
   .quiz-square-backgorund {
-    background: color(white);
+    position: relative;
     animation: sizeInQuiz 2.5s forwards ease;
     position: absolute;
     height: 100%;
     width: 100%;
+    &.redirect-anim {
+      animation: sizeOutQuiz 0.75s forwards ease;
+      & ~ div,
+      & ~ form,
+      & ~ i,
+      & > div,
+      & ~ button {
+        opacity: 0 !important;
+        animation: none;
+      }
+    }
+  }
+  .timer-indicator {
+    position: absolute;
+    clip-path: polygon(31% 0, 6% 50%, 31% 100%, 30% 100%, 5% 50%, 30% 0%);
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    background: color(thirdColor);
+    animation: fadeInLeft 1.25s ease forwards;
+    overflow: hidden;
+    transition: 0.5s;
+    z-index: 0;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: color(white);
+      transform: translateY(-100%);
+      transition: 0.5s;
+    }
+    &.active {
+      background: linear-gradient(to top, color(red) 100%, color(white) 100%);
+      &::after {
+        transform: translateY(0%);
+        animation: timerProgress 30s linear forwards;
+      }
+    }
   }
 
   form {
@@ -19,11 +58,170 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: 45%;
+    transition: 0.5s ease;
+    animation: fadeInRight 1.75s ease-in-out;
+    h2 {
+      margin-bottom: 0.5em;
+      margin-top: 1.5em;
+    }
+    .form-checkboxes {
+      label {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        margin-right: 1em;
+        transition: 0.2s;
+        &:active {
+          transform: scale(1.1);
+        }
+        input {
+          display: none;
+          & + div {
+            display: inline-block;
+            border: 3px solid rgba(color(secondary), 0.2);
+            border-radius: 50%;
+            position: relative;
+            width: 3vw;
+            height: 3vw;
+            max-width: 30px;
+            max-height: 30px;
+            margin-right: 0.5em;
+            svg {
+              fill: none;
+              stroke-width: 3.6;
+              stroke: color(secondary);
+              stroke-linecap: round;
+              stroke-linejoin: round;
+              width: 3vw;
+              height: 3vw;
+              max-width: 30px;
+              max-height: 30px;
+              display: block;
+              position: absolute;
+              left: -3px;
+              top: -3px;
+              right: -3px;
+              bottom: -3px;
+              z-index: 1;
+              stroke-dashoffset: 162.6 - 38;
+              stroke-dasharray: 0 162.6 133 (162.6 - 133);
+              transition: all 0.4s ease 0s;
+            }
+          }
+          &:checked + div {
+            svg {
+              stroke-dashoffset: 162.6;
+              stroke-dasharray: 0 162.6 28 (162.6 - 28);
+              transition: all 0.4s ease 0.2s;
+            }
+          }
+        }
+      }
+    }
+    .form-input {
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: color(secondary);
+        height: 1px;
+        width: 4em;
+      }
+      input {
+        border: none;
+        outline: none;
+        width: 4em;
+        font-size: 1.2em;
+        padding: 0 0 0.25em 0.5em;
+        background: transparent;
+      }
+    }
+    .btn-get {
+      position: relative;
+      margin-top: 1.5em;
+    }
+    &.dimmed {
+      opacity: 0.2;
+      pointer-events: none;
+    }
+  }
+
+  .fa-home {
+    position: absolute;
+    color: rgba(color(thirdColor), 0.5);
+    font-size: 1.2em;
+    top: 1em;
+    right: 0;
+    opacity: 0;
+    z-index: 10;
+    animation: fadeInRight 0.5s ease-in-out 1.5s forwards;
+    cursor: pointer;
   }
   .btn-start {
-    position: relative;
+    position: absolute;
     left: 50%;
-    transform: translateY(-50%);
+    top: 20%;
+    animation: fadeInTop 0.5s ease;
+  }
+  .btn-next {
+    position: absolute;
+    bottom: 5vh;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6em;
+    border-radius: 5px;
+    &:hover {
+      color: color(white);
+      background: color(secondary);
+    }
+  }
+  .btn-retake {
+    position: relative;
+  }
+  .btn-start,
+  .btn-get,
+  .btn-next,
+  .btn-retake {
+    padding: 0.5rem;
+    border: color(secondary) 1px solid;
+    outline: none;
+    color: color(secondary);
+    background: transparent;
+    cursor: pointer;
+    transition: 0.5s ease;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .btn-get,
+  .btn-start,
+  .btn-retake {
+    &::after {
+      content: "";
+      position: absolute;
+      top: -100%;
+      left: 0px;
+      height: 100%;
+      width: 100%;
+      background: color(secondary);
+      transition: 0.5s ease;
+      text-align: center;
+      z-index: -1;
+    }
+    &:hover {
+      color: color(white);
+      &::after {
+        top: 0px;
+      }
+    }
   }
 
   .question-box {
@@ -59,6 +257,7 @@
       }
       .correct {
         background: color(thirdColor);
+        color: color(white);
       }
       .incorrect {
         background: color(red);
@@ -73,7 +272,12 @@
       top: -100%;
       width: 100%;
       height: 100%;
-      background: color(red);
+      background: linear-gradient(
+        90deg,
+        color(thirdColor) 33%,
+        color(white) 33% 66%,
+        color(red) 66%
+      );
       animation: slideInTop 0.5s forwards 1s;
       animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
       p {
@@ -81,26 +285,32 @@
         margin: 0.5em auto;
       }
     }
+  }
 
-    button {
-      position: absolute;
-      bottom: 5vh;
-      left: 50%;
-      transform: translateX(-50%);
-      border: 2px color(thirdColor) solid;
-      transition: all 350ms ease-in-out;
-      width: 6em;
-      height: 2.5em;
-      outline: none;
-      cursor: pointer;
-      background-color: transparent;
-      text-decoration: none;
-      text-align: center;
-      text-transform: uppercase;
-      border-radius: 5px;
-      z-index: 100;
-      &:hover {
-      }
+  .question-recap {
+    .score-overview-title {
+      font-size: 0.7em;
+      margin-top: 2em;
+      margin-bottom: 0.5em;
+    }
+
+    .score-overview-score {
+      font-size: 0.9em;
+      word-spacing: 0.8em;
+      margin-bottom: 0.5em;
+    }
+  }
+
+  .score {
+    position: absolute;
+    right: 1em;
+    display: flex;
+    align-items: center;
+    p {
+      margin-right: 0.75em;
+    }
+    span {
+      font-size: 0.9em;
     }
   }
 

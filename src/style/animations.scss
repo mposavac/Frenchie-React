@@ -47,6 +47,7 @@
   }
 }
 
+//PROMJENITI IME
 @keyframes fadingIn {
   0% {
     opacity: 0;
@@ -57,7 +58,7 @@
     transform: rotate(-45deg) translateY(-61px) scale(1);
   }
 }
-
+//PROMJENITI IME
 @keyframes fadingInMobile {
   0% {
     opacity: 0;
@@ -95,11 +96,24 @@
 @keyframes sizeInQuiz {
   from {
     clip-path: polygon(100% 0%, 100% 100%, 0% 100%, -25% 50%, 0% 0);
+    background: rgba(color(white), 1);
   }
   to {
     clip-path: polygon(100% 0%, 100% 100%, 30% 100%, 5% 50%, 30% 0);
+    background: rgba(color(white), 0.9);
   }
 }
+@keyframes sizeOutQuiz {
+  from {
+    clip-path: polygon(100% 0%, 100% 100%, 30% 100%, 5% 50%, 30% 0);
+    background: rgba(color(white), 0.9);
+  }
+  to {
+    clip-path: polygon(100% 0%, 100% 100%, 0% 100%, -25% 50%, 0% 0);
+    background: rgba(color(white), 1);
+  }
+}
+
 @keyframes sizeInOverview {
   from {
     transform: rotate(0deg) scale(5);
@@ -119,6 +133,38 @@
     opacity: 1;
   }
 }
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate(0%, -50%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 0%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(0%, 0%);
+  }
+}
+
+@keyframes fadeInTop {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 @keyframes slideInTop {
   from {
@@ -126,5 +172,14 @@
   }
   to {
     top: 0;
+  }
+}
+
+@keyframes timerProgress {
+  from {
+    top: -100%;
+  }
+  to {
+    top: 0%;
   }
 }

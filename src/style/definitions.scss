@@ -30,4 +30,11 @@ $mobile: 400px;
 
 html {
   font-family: "Muli", sans-serif;
+  &::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    content: "PRODUCTION BUILD";
+    color: rgba(255, 255, 255, 0.7);
+  }
 }
