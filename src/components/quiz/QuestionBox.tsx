@@ -1,18 +1,27 @@
 import React, { useState, useEffect } from "react";
 import _ from "lodash";
 
-function QuestionBox({ question, questionIndex, handleNext, handleScore }) {
-  const [answers, setAnswers] = useState(undefined);
-  const [correctIndex, setCorrectIndex] = useState(null);
-  const [selectedIndex, setSelectedIndex] = useState(null);
-  const [isAnswered, setIsAnswered] = useState(false);
-  const [timer, setTimer] = useState(30);
+import { IPropsQBox } from "../../types/Quiz";
+
+const QuestionBox: React.FC<IPropsQBox> = ({
+  question,
+  questionIndex,
+  handleNext,
+  handleScore
+}) => {
+  const [answers, setAnswers] = useState<Array<string>>([]);
+  const [correctIndex, setCorrectIndex] = useState<number | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+  const [isAnswered, setIsAnswered] = useState<boolean>(false);
+  const [timer, setTimer] = useState<number>(30);
 
   useEffect(() => {
     setIsAnswered(false);
     setSelectedIndex(null);
-    let answers = question.incorrect_answers.concat(question.correct_answer);
-    let randomizedAnswers = _.shuffle(answers);
+    let answers: Array<string> = question.incorrect_answers.concat(
+      question.correct_answer
+    );
+    let randomizedAnswers: Array<string> = _.shuffle(answers);
     setAnswers(randomizedAnswers);
     setCorrectIndex(randomizedAnswers.indexOf(question.correct_answer));
   }, [question]);
@@ -41,30 +50,30 @@ function QuestionBox({ question, questionIndex, handleNext, handleScore }) {
     setTimer(30);
   }, [questionIndex]);
 
-  const checkAnswer = e => {
+  const checkAnswer = (e: any) => {
     if (!isAnswered) {
       setSelectedIndex(parseInt(e.target.id));
       setIsAnswered(true);
     }
   };
 
-  const getStyle = index => {
+  const getStyle = (index: number) => {
     if (isAnswered && correctIndex === index) return "correct";
     else if (isAnswered && selectedIndex === index) return "incorrect";
     return "";
   };
 
-  console.log(timer);
+  console.log(question);
   return (
     <div className="question-box">
       <h2>How would you say "{question.translation}" on french?</h2>
       <div className="questions-container">
-        {answers &&
-          answers.map((answer, i) => (
+        {answers.length &&
+          answers.map((answer: string, i: number) => (
             <p
               key={answer}
               className={getStyle(i) + " question"}
-              id={i}
+              id={i.toString()}
               onClick={checkAnswer}
             >
               {answer}
@@ -93,6 +102,6 @@ function QuestionBox({ question, questionIndex, handleNext, handleScore }) {
       )}
     </div>
   );
-}
+};
 
 export default QuestionBox;

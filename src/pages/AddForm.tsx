@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import InputField from "../components/addNew/InputField";
 
-function AddForm() {
-  const [newWord, setNewWord] = useState("");
-  const [translation, setTranslation] = useState("");
-  const [conjugation, setConjugation] = useState([]);
+const AddForm: React.FC<{}> = () => {
+  const [newWord, setNewWord] = useState<string>("");
+  const [translation, setTranslation] = useState<string>("");
+  const [conjugation, setConjugation] = useState<Array<string>>([]);
 
   const addConjugation = () => {
     let newConjug = [...conjugation];
@@ -13,7 +13,7 @@ function AddForm() {
     setNewWord("");
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e: any) => {
     e.preventDefault();
   };
 
@@ -50,6 +50,6 @@ function AddForm() {
       </form>
     </div>
   );
-}
+};
 
 export default AddForm;

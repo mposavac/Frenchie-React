@@ -1,11 +1,11 @@
 import React from "react";
 
-function Overview() {
+const Overview: React.FC<{}> = () => {
   return (
     <div className="overview">
       <div className="overview-container" />
     </div>
   );
-}
+};
 
 export default Overview;

@@ -94,7 +94,7 @@ export const getQuestions = options => {
           .then(res => res.json())
           .then(translation => (obj["translation"] = translation.text[0]));
       }
-      dispatch({ type: "QUESTION_RESPONSE", data: quizWords });
-    } else dispatch({ type: "QUESTION_RESPONSE", data: [] });
+      dispatch({ type: "QUESTION_RESPONSE", questions: quizWords });
+    } else dispatch({ type: "QUESTION_RESPONSE", questions: [] });
   };
 };

@@ -1,11 +1,13 @@
 import React from "react";
 
-function QuestionForm({
+import { IPropsQForm } from "../../types/Quiz";
+
+const QuestionForm: React.FC<IPropsQForm> = ({
   prepareQuestions,
   questionsLoaded,
   options,
   handleOptions
-}) {
+}) => {
   return (
     <form
       onSubmit={prepareQuestions}
@@ -75,7 +77,7 @@ function QuestionForm({
         <input
           type="number"
           name="numOfQuestions"
-          min="5"
+          min="1"
           max="100"
           value={options.numOfQuestions}
           onChange={handleOptions}
@@ -87,6 +89,6 @@ function QuestionForm({
       </button>
     </form>
   );
-}
+};
 
 export default QuestionForm;

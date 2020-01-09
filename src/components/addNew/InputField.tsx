@@ -1,6 +1,12 @@
 import React from "react";
+import { IPropsInputField } from "../../types/Quiz";
 
-function InputField({ value, setter, id, text }) {
+const InputField: React.FC<IPropsInputField> = ({
+  value,
+  setter,
+  id,
+  text
+}) => {
   return (
     <div className="input-field">
       <input
@@ -16,6 +22,6 @@ function InputField({ value, setter, id, text }) {
       </label>
     </div>
   );
-}
+};
 
 export default InputField;

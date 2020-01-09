@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Redirect } from "react-router-dom";
+import { IOptions } from "../types/Quiz";
 
 import { getQuestions } from "../store/actions/quizActions";
 import QuestionForm from "../components/quiz/QuestionForm";
@@ -8,22 +9,22 @@ import QuestionBox from "../components/quiz/QuestionBox";
 import Loading from "../components/Loading";
 import QuizRecap from "../components/quiz/QuizRecap";
 
-function Quiz() {
-  const [isFetching, setIsFetching] = useState(false);
-  const [isStarted, setIsStarted] = useState(false);
-  const [questionIndex, setIndex] = useState(0);
-  const [options, setOptions] = useState({
+const Quiz: React.FC<{}> = () => {
+  const [isFetching, setIsFetching] = useState<boolean>(false);
+  const [isStarted, setIsStarted] = useState<boolean>(false);
+  const [questionIndex, setIndex] = useState<number>(0);
+  const [options, setOptions] = useState<IOptions>({
     adjectives: { checked: true },
     nouns: { checked: false },
     verbs: { checked: false },
     numOfQuestions: 20
   });
-  const [score, setScore] = useState(0);
-  const [isAnswered, setIsAnswered] = useState(true);
-  const [animate, setAnimate] = useState(false);
-  const [redirecting, setRedirecting] = useState(false);
-  const [numOfCorrect, setNumOfCorrect] = useState(0);
-  const questions = useSelector(state => state.quiz.questions);
+  const [score, setScore] = useState<number>(0);
+  const [isAnswered, setIsAnswered] = useState<boolean>(true);
+  const [animate, setAnimate] = useState<boolean>(false);
+  const [redirecting, setRedirecting] = useState<boolean>(false);
+  const [numOfCorrect, setNumOfCorrect] = useState<number>(0);
+  const questions = useSelector<any, any>(state => state.quiz.questions);
 
   const dispatch = useDispatch();
 
@@ -34,9 +35,9 @@ function Quiz() {
 
   useEffect(() => {
     dispatch(getQuestions(null));
-  }, []);
+  }, [dispatch]);
 
-  const prepareQuestions = e => {
+  const prepareQuestions = (e: any) => {
     e.preventDefault();
     setIsFetching(true);
     dispatch(getQuestions(options));
@@ -47,14 +48,14 @@ function Quiz() {
     setIsAnswered(false);
   };
 
-  const handleOptions = e => {
+  const handleOptions = (e: any) => {
     if (questions.length > 0) {
       dispatch(getQuestions(null));
       setIsFetching(false);
     }
     let newOptions =
       e.target.name === "numOfQuestions"
-        ? { ...options, numOfQuestions: e.target.value }
+        ? { ...options, numOfQuestions: parseInt(e.target.value) }
         : {
             ...options,
             [e.target.name]: { checked: e.target.checked }
@@ -67,7 +68,7 @@ function Quiz() {
     setIsAnswered(false);
   };
 
-  const handleScore = (timer, isCorrect) => {
+  const handleScore = (timer: number, isCorrect: boolean) => {
     setTimeout(() => setIsAnswered(true), 500);
     if (isCorrect) {
       setScore(score + timer);
@@ -89,7 +90,6 @@ function Quiz() {
     setTimeout(() => setRedirecting(true), 750);
   };
 
-  console.log(questions);
   return (
     <div className="quiz">
       <div
@@ -108,7 +108,7 @@ function Quiz() {
         )}
       </div>
       <Loading isLoading={isFetching} />
-      {!isStarted || questionIndex === parseInt(options.numOfQuestions) ? (
+      {!isStarted || questionIndex === options.numOfQuestions ? (
         <i className="fas fa-home" onClick={redirectHome} />
       ) : null}
       {redirecting && <Redirect to="/" />}
@@ -141,7 +141,7 @@ function Quiz() {
         </React.Fragment>
       )}
       <QuizRecap
-        show={questionIndex === parseInt(options.numOfQuestions)}
+        show={questionIndex === options.numOfQuestions}
         score={score}
         numOfCorrect={numOfCorrect}
         numOfQuestions={options.numOfQuestions}
@@ -149,6 +149,6 @@ function Quiz() {
       />
     </div>
   );
-}
+};
 
 export default Quiz;

@@ -5,7 +5,7 @@ const initState = {
   ]
 };
 
-const wordReducer = (state = initState, action) => {
+const wordReducer = (state = initState, action: any) => {
   return state;
 };
 
