@@ -9,7 +9,8 @@ const Loading: React.FC<{ isLoading: boolean }> = ({ isLoading }) => {
       width: "100%",
       height: "100%",
       top: 0,
-      right: 0
+      right: 0,
+      zIndex: 10000
     },
     enter: { opacity: 1 },
     leave: { opacity: 0 }

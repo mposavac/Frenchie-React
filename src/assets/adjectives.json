@@ -1,0 +1,802 @@
+[
+  {
+    "word": "autre",
+    "translation": "other"
+  },
+  {
+    "word": "nouveau",
+    "translation": "new"
+  },
+  {
+    "word": "grand",
+    "translation": "tall"
+  },
+  {
+    "word": "bon",
+    "translation": "Well"
+  },
+  {
+    "word": "petit",
+    "translation": "small"
+  },
+  {
+    "word": "même",
+    "translation": "even"
+  },
+  {
+    "word": "dernier",
+    "translation": "latest"
+  },
+  {
+    "word": "seul",
+    "translation": "alone"
+  },
+  {
+    "word": "beau",
+    "translation": "beautiful"
+  },
+  {
+    "word": "jeune",
+    "translation": "young"
+  },
+  {
+    "word": "meilleur",
+    "translation": "better"
+  },
+  {
+    "word": "français",
+    "translation": "French"
+  },
+  {
+    "word": "différent",
+    "translation": "different"
+  },
+  {
+    "word": "nombreux",
+    "translation": "numerous"
+  },
+  {
+    "word": "important",
+    "translation": "important"
+  },
+  {
+    "word": "juste",
+    "translation": "fair"
+  },
+  {
+    "word": "vrai",
+    "translation": "true"
+  },
+  {
+    "word": "politique",
+    "translation": "Politics"
+  },
+  {
+    "word": "propre",
+    "translation": "clean"
+  },
+  {
+    "word": "social",
+    "translation": "social"
+  },
+  {
+    "word": "possible",
+    "translation": "possible"
+  },
+  {
+    "word": "général",
+    "translation": "general"
+  },
+  {
+    "word": "national",
+    "translation": "national"
+  },
+  {
+    "word": "simple",
+    "translation": "simple"
+  },
+  {
+    "word": "plein",
+    "translation": "full"
+  },
+  {
+    "word": "gratuit",
+    "translation": "free"
+  },
+  {
+    "word": "gros",
+    "translation": "large"
+  },
+  {
+    "word": "fort",
+    "translation": "strong"
+  },
+  {
+    "word": "haut",
+    "translation": "high"
+  },
+  {
+    "word": "ancien",
+    "translation": "former"
+  },
+  {
+    "word": "international",
+    "translation": "international"
+  },
+  {
+    "word": "principal",
+    "translation": "main"
+  },
+  {
+    "word": "présent",
+    "translation": "present"
+  },
+  {
+    "word": "sûr",
+    "translation": "sure"
+  },
+  {
+    "word": "prochain",
+    "translation": "next"
+  },
+  {
+    "word": "difficile",
+    "translation": "difficult"
+  },
+  {
+    "word": "européen",
+    "translation": "European"
+  },
+  {
+    "word": "humain",
+    "translation": "human"
+  },
+  {
+    "word": "nécessaire",
+    "translation": "necessary"
+  },
+  {
+    "word": "réel",
+    "translation": "real"
+  },
+  {
+    "word": "facile",
+    "translation": "easy"
+  },
+  {
+    "word": "économique",
+    "translation": "economic"
+  },
+  {
+    "word": "actuel",
+    "translation": "current"
+  },
+  {
+    "word": "disponible",
+    "translation": "available"
+  },
+  {
+    "word": "particulier",
+    "translation": "particular"
+  },
+  {
+    "word": "blanc",
+    "translation": "White"
+  },
+  {
+    "word": "local",
+    "translation": "local"
+  },
+  {
+    "word": "noir",
+    "translation": "black"
+  },
+  {
+    "word": "américain",
+    "translation": "American"
+  },
+  {
+    "word": "professionnel",
+    "translation": "professional"
+  },
+  {
+    "word": "mauvais",
+    "translation": "bad"
+  },
+  {
+    "word": "financier",
+    "translation": "financial"
+  },
+  {
+    "word": "public",
+    "translation": "public"
+  },
+  {
+    "word": "responsable",
+    "translation": "responsible"
+  },
+  {
+    "word": "libre",
+    "translation": "free"
+  },
+  {
+    "word": "certain",
+    "translation": "certain"
+  },
+  {
+    "word": "mondial",
+    "translation": "global"
+  },
+  {
+    "word": "long",
+    "translation": "long"
+  },
+  {
+    "word": "unique",
+    "translation": "unique"
+  },
+  {
+    "word": "technique",
+    "translation": "technical"
+  },
+  {
+    "word": "personnel",
+    "translation": "staff"
+  },
+  {
+    "word": "publique",
+    "translation": "public"
+  },
+  {
+    "word": "divers",
+    "translation": "various"
+  },
+  {
+    "word": "longue",
+    "translation": "long"
+  },
+  {
+    "word": "véritable",
+    "translation": "true"
+  },
+  {
+    "word": "prêt",
+    "translation": "ready"
+  },
+  {
+    "word": "étranger",
+    "translation": "foreign"
+  },
+  {
+    "word": "naturel",
+    "translation": "natural"
+  },
+  {
+    "word": "internet",
+    "translation": "Internet"
+  },
+  {
+    "word": "vieux",
+    "translation": "old"
+  },
+  {
+    "word": "supérieur",
+    "translation": "superior"
+  },
+  {
+    "word": "rapide",
+    "translation": "fast"
+  },
+  {
+    "word": "chaud",
+    "translation": "hot"
+  },
+  {
+    "word": "entier",
+    "translation": "full"
+  },
+  {
+    "word": "dur",
+    "translation": "hard"
+  },
+  {
+    "word": "suivant",
+    "translation": "next"
+  },
+  {
+    "word": "capable",
+    "translation": "able"
+  },
+  {
+    "word": "proche",
+    "translation": "close"
+  },
+  {
+    "word": "moyen",
+    "translation": "way"
+  },
+  {
+    "word": "rouge",
+    "translation": "red"
+  },
+  {
+    "word": "complet",
+    "translation": "full"
+  },
+  {
+    "word": "gauche",
+    "translation": "left"
+  },
+  {
+    "word": "efficace",
+    "translation": "effective"
+  },
+  {
+    "word": "excellent",
+    "translation": "excellent"
+  },
+  {
+    "word": "joli",
+    "translation": "pretty"
+  },
+  {
+    "word": "commun",
+    "translation": "common"
+  },
+  {
+    "word": "droit",
+    "translation": "law"
+  },
+  {
+    "word": "total",
+    "translation": "total"
+  },
+  {
+    "word": "normal",
+    "translation": "normal"
+  },
+  {
+    "word": "large",
+    "translation": "large"
+  },
+  {
+    "word": "spécial",
+    "translation": "special"
+  },
+  {
+    "word": "populaire",
+    "translation": "popular"
+  },
+  {
+    "word": "heureux",
+    "translation": "happy"
+  },
+  {
+    "word": "final",
+    "translation": "final"
+  },
+  {
+    "word": "super",
+    "translation": "Great"
+  },
+  {
+    "word": "faible",
+    "translation": "low"
+  },
+  {
+    "word": "fin",
+    "translation": "end"
+  },
+  {
+    "word": "commercial",
+    "translation": "commercial"
+  },
+  {
+    "word": "supplémentaire",
+    "translation": "additional"
+  },
+  {
+    "word": "militaire",
+    "translation": "military"
+  },
+  {
+    "word": "court",
+    "translation": "short"
+  },
+  {
+    "word": "physique",
+    "translation": "physical"
+  },
+  {
+    "word": "utile",
+    "translation": "useful"
+  },
+  {
+    "word": "frais",
+    "translation": "fresh"
+  },
+  {
+    "word": "clair",
+    "translation": "clear"
+  },
+  {
+    "word": "vidéo",
+    "translation": "video"
+  },
+  {
+    "word": "officiel",
+    "translation": "official"
+  },
+  {
+    "word": "bas",
+    "translation": "low"
+  },
+  {
+    "word": "futur",
+    "translation": "future"
+  },
+  {
+    "word": "essentiel",
+    "translation": "essential"
+  },
+  {
+    "word": "traditionnel",
+    "translation": "traditional"
+  },
+  {
+    "word": "grave",
+    "translation": "serious"
+  },
+  {
+    "word": "magnifique",
+    "translation": "magnificent"
+  },
+  {
+    "word": "intéressant",
+    "translation": "interesting"
+  },
+  {
+    "word": "direct",
+    "translation": "direct"
+  },
+  {
+    "word": "énorme",
+    "translation": "huge"
+  },
+  {
+    "word": "relatif",
+    "translation": "relative"
+  },
+  {
+    "word": "pire",
+    "translation": "worst"
+  },
+  {
+    "word": "anglais",
+    "translation": "English"
+  },
+  {
+    "word": "culturel",
+    "translation": "cultural"
+  },
+  {
+    "word": "régional",
+    "translation": "regional"
+  },
+  {
+    "word": "vert",
+    "translation": "green"
+  },
+  {
+    "word": "civil",
+    "translation": "civil"
+  },
+  {
+    "word": "rare",
+    "translation": "rare"
+  },
+  {
+    "word": "récent",
+    "translation": "recent"
+  },
+  {
+    "word": "précis",
+    "translation": "specific"
+  },
+  {
+    "word": "scientifique",
+    "translation": "scientist"
+  },
+  {
+    "word": "puissant",
+    "translation": "powerful"
+  },
+  {
+    "word": "léger",
+    "translation": "lightweight"
+  },
+  {
+    "word": "riche",
+    "translation": "rich"
+  },
+  {
+    "word": "doux",
+    "translation": "soft"
+  },
+  {
+    "word": "central",
+    "translation": "central"
+  },
+  {
+    "word": "profond",
+    "translation": "deep"
+  },
+  {
+    "word": "électrique",
+    "translation": "electric"
+  },
+  {
+    "word": "précédent",
+    "translation": "previous"
+  },
+  {
+    "word": "faux",
+    "translation": "false"
+  },
+  {
+    "word": "spécifique",
+    "translation": "specific"
+  },
+  {
+    "word": "cher",
+    "translation": "expensive"
+  },
+  {
+    "word": "net",
+    "translation": "net"
+  },
+  {
+    "word": "moderne",
+    "translation": "modern"
+  },
+  {
+    "word": "impossible",
+    "translation": "impossible"
+  },
+  {
+    "word": "nul",
+    "translation": "no"
+  },
+  {
+    "word": "original",
+    "translation": "original"
+  },
+  {
+    "word": "pratique",
+    "translation": "convenient"
+  },
+  {
+    "word": "classique",
+    "translation": "classical"
+  },
+  {
+    "word": "actif",
+    "translation": "active"
+  },
+  {
+    "word": "médical",
+    "translation": "medical"
+  },
+  {
+    "word": "froid",
+    "translation": "cold"
+  },
+  {
+    "word": "historique",
+    "translation": "historical"
+  },
+  {
+    "word": "lourd",
+    "translation": "heavy"
+  },
+  {
+    "word": "moindre",
+    "translation": "lesser"
+  },
+  {
+    "word": "bleu",
+    "translation": "blue"
+  },
+  {
+    "word": "neuf",
+    "translation": "new"
+  },
+  {
+    "word": "double",
+    "translation": "double"
+  },
+  {
+    "word": "agréable",
+    "translation": "pleasant"
+  },
+  {
+    "word": "positif",
+    "translation": "positive"
+  },
+  {
+    "word": "majeur",
+    "translation": "major"
+  },
+  {
+    "word": "collectif",
+    "translation": "collective"
+  },
+  {
+    "word": "conséquent",
+    "translation": "consequent"
+  },
+  {
+    "word": "scolaire",
+    "translation": "school"
+  },
+  {
+    "word": "numérique",
+    "translation": "digital"
+  },
+  {
+    "word": "parfait",
+    "translation": "perfect"
+  },
+  {
+    "word": "quotidien",
+    "translation": "daily"
+  },
+  {
+    "word": "familial",
+    "translation": "family"
+  },
+  {
+    "word": "idéal",
+    "translation": "ideal"
+  },
+  {
+    "word": "pur",
+    "translation": "pure"
+  },
+  {
+    "word": "intérieur",
+    "translation": "inside"
+  },
+  {
+    "word": "matériel",
+    "translation": "equipment"
+  },
+  {
+    "word": "individuel",
+    "translation": "individual"
+  },
+  {
+    "word": "célèbre",
+    "translation": "popular"
+  },
+  {
+    "word": "sportif",
+    "translation": "athletic"
+  },
+  {
+    "word": "extérieur",
+    "translation": "outside"
+  },
+  {
+    "word": "sérieux",
+    "translation": "serious"
+  },
+  {
+    "word": "portable",
+    "translation": "portable"
+  },
+  {
+    "word": "exceptionnel",
+    "translation": "exceptional"
+  },
+  {
+    "word": "présidentiel",
+    "translation": "presidential"
+  },
+  {
+    "word": "privé",
+    "translation": "private"
+  },
+  {
+    "word": "dangereux",
+    "translation": "dangerous"
+  },
+  {
+    "word": "religieux",
+    "translation": "religious"
+  },
+  {
+    "word": "issu",
+    "translation": "from"
+  },
+  {
+    "word": "allemand",
+    "translation": "German"
+  },
+  {
+    "word": "évident",
+    "translation": "obvious"
+  },
+  {
+    "word": "âgé",
+    "translation": "age"
+  },
+  {
+    "word": "durable",
+    "translation": "durable"
+  },
+  {
+    "word": "africain",
+    "translation": "African"
+  },
+  {
+    "word": "indépendant",
+    "translation": "independent"
+  },
+  {
+    "word": "alimentaire",
+    "translation": "alimentary"
+  },
+  {
+    "word": "global",
+    "translation": "global"
+  },
+  {
+    "word": "virtuel",
+    "translation": "virtual"
+  },
+  {
+    "word": "mobile",
+    "translation": "mobile"
+  },
+  {
+    "word": "superbe",
+    "translation": "superb"
+  },
+  {
+    "word": "pauvre",
+    "translation": "poor"
+  },
+  {
+    "word": "administratif",
+    "translation": "administrative"
+  },
+  {
+    "word": "fameux",
+    "translation": "famous"
+  },
+  {
+    "word": "vif",
+    "translation": "bright"
+  },
+  {
+    "word": "content",
+    "translation": "happy"
+  },
+  {
+    "word": "industriel",
+    "translation": "industrial"
+  },
+  {
+    "word": "électronique",
+    "translation": "electronic"
+  },
+  {
+    "word": "objectif",
+    "translation": "goal"
+  },
+  {
+    "word": "fondamental",
+    "translation": "fundamental"
+  }
+]

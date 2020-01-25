@@ -1,5 +1,6 @@
 export interface IPropsHLogin {
   show: boolean;
+  isLogin: boolean;
   handleLoginMenu: () => void;
   showBackside: () => void;
 }
@@ -17,4 +18,9 @@ export interface ISignupActionProps {
   username?: string;
   email: string;
   password: string;
+}
+
+export interface IErrorResponse {
+  code: string;
+  message: string | undefined;
 }

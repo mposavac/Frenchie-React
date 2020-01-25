@@ -1,12 +1,15 @@
-const initState = {
-  words: [
-    { id: "1", words: ["etre", "etais"], translation: "to be" },
-    { id: "2", words: ["etre", "etais"], translation: "to be" }
-  ]
-};
+import { WordsFetchActionTypes, WORDS_FETCHED } from "../../types/actions";
+import { IQuestion } from "../../types/Quiz";
 
-const wordReducer = (state = initState, action: any) => {
-  return state;
+const initialState: Array<IQuestion> = [];
+
+const wordReducer = (state = initialState, action: WordsFetchActionTypes) => {
+  switch (action.type) {
+    case WORDS_FETCHED:
+      return [...action.words];
+    default:
+      return state;
+  }
 };
 
 export default wordReducer;

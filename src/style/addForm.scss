@@ -1,25 +1,51 @@
-.form-background {
+.addform-page {
   position: relative;
   width: 100%;
   height: 100vh;
   background: url("../assets/architecture-buildings-city-373893.jpg")
     center/cover no-repeat;
   overflow: hidden;
-  .form-container {
-    background: color(white);
+  .addform-square-background {
     animation: sizeInAdd 2.5s forwards ease;
     position: absolute;
+    height: 100%;
+    width: 100%;
+    &.redirect-anim {
+      animation: sizeOutAdd 0.75s forwards ease;
+      & ~ form,
+      & ~ .fa-home {
+        opacity: 0 !important;
+        animation: none;
+      }
+    }
   }
-  form {
+  .fa-home {
+    position: absolute;
+    color: rgba(color(thirdColor), 0.5);
+    font-size: 1.2em;
+    top: 1em;
+    left: 1em;
+    opacity: 0;
+    z-index: 10;
+    animation: fadeInRight 0.5s ease-in-out 1.5s forwards;
+    cursor: pointer;
+  }
+
+  form.addform {
     position: relative;
     justify-content: center;
     align-items: center;
     z-index: 1;
-    width: 50%;
+    width: 40%;
     height: 75%;
+    top: 35%;
+    left: 30%;
     padding: 1rem;
-    opacity: 0;
-    animation: fadeIn 0.5s ease 2.5s forwards;
+    transition: 0.3s;
+    animation: fadeInLeft 1.75s ease-in-out;
+    &.hidden {
+      opacity: 0 !important;
+    }
     .input-field {
       position: relative;
       height: 50px;
@@ -81,12 +107,38 @@
       outline: none;
     }
     .btn-submit {
+      position: relative;
       padding: 0.5rem;
+      margin-top: 1.5em;
       border: color(secondary) 1px solid;
       outline: none;
       color: color(secondary);
-      background: color(primary);
+      background: transparent;
       cursor: pointer;
+      transition: 0.5s ease;
+      overflow: hidden;
+      z-index: 1;
+      &:disabled {
+        opacity: 0.3;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: -100%;
+        left: 0px;
+        height: 100%;
+        width: 100%;
+        background: color(secondary);
+        transition: 0.5s ease;
+        text-align: center;
+        z-index: -1;
+      }
+      &:hover {
+        color: color(white);
+        &::after {
+          top: 0px;
+        }
+      }
     }
   }
 }

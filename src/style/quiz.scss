@@ -6,9 +6,8 @@
     center/cover no-repeat;
   overflow: hidden;
   .quiz-square-backgorund {
-    position: relative;
-    animation: sizeInQuiz 2.5s forwards ease;
     position: absolute;
+    animation: sizeInQuiz 2.5s forwards ease;
     height: 100%;
     width: 100%;
     &.redirect-anim {

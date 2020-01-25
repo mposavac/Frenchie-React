@@ -39,8 +39,15 @@ const Quiz: React.FC<{}> = () => {
 
   const prepareQuestions = (e: any) => {
     e.preventDefault();
-    setIsFetching(true);
-    dispatch(getQuestions(options));
+
+    if (
+      options.adjectives.checked ||
+      options.nouns.checked ||
+      options.verbs.checked
+    ) {
+      setIsFetching(true);
+      dispatch(getQuestions(options));
+    }
   };
 
   const startQuiz = () => {
@@ -92,6 +99,7 @@ const Quiz: React.FC<{}> = () => {
 
   return (
     <div className="quiz">
+      <Loading isLoading={isFetching} />
       <div
         className={
           animate
@@ -107,7 +115,7 @@ const Quiz: React.FC<{}> = () => {
           />
         )}
       </div>
-      <Loading isLoading={isFetching} />
+
       {!isStarted || questionIndex === options.numOfQuestions ? (
         <i className="fas fa-home" onClick={redirectHome} />
       ) : null}
@@ -141,7 +149,7 @@ const Quiz: React.FC<{}> = () => {
         </React.Fragment>
       )}
       <QuizRecap
-        show={questionIndex === options.numOfQuestions}
+        show={questionIndex === options.numOfQuestions && questionIndex > 0}
         score={score}
         numOfCorrect={numOfCorrect}
         numOfQuestions={options.numOfQuestions}

@@ -5,9 +5,184 @@
   background: url("../assets/architecture-buildings-city-373893.jpg")
     center/cover no-repeat;
   overflow: hidden;
-  .overview-container {
-    background: color(white);
-    animation: sizeInOverview 2.5s forwards ease;
+  .overview-square-backgorund {
     position: absolute;
+    animation: sizeInOverview 2.5s forwards ease;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    &.redirect-anim {
+      animation: sizeOutOverview 0.75s forwards ease;
+      & ~ div,
+      & ~ .fa-home {
+        opacity: 0 !important;
+        animation: none;
+      }
+    }
   }
+  .fa-home {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+    left: 8px;
+    opacity: 0;
+    color: rgba(color(thirdColor), 0.2);
+    transition: 0.3s;
+    animation: 2s fadeIn 2s ease forwards;
+    cursor: pointer;
+    &:hover {
+      color: rgba(color(thirdColor), 0.5);
+    }
+  }
+  .categories {
+    position: relative;
+    z-index: 150;
+    margin: auto;
+    width: 70%;
+    height: 100vh;
+    transition: 0.3s;
+    animation: 2.5s zoomInBtn ease;
+    .btn {
+      position: absolute;
+      cursor: pointer;
+      display: inline-block;
+      padding: 3.5vh 0;
+      text-align: center;
+      width: 10vw;
+      border: 1px color(thirdColor) solid;
+      color: color(thirdColor);
+      font-weight: bold;
+      border-radius: 10px;
+      transition: all 0.5s;
+      top: 50%;
+      transform: translateY(-50%);
+      overflow: hidden;
+      @for $i from 0 to 5 {
+        &:nth-child(#{$i + 1}) {
+          left: #{$i * 20 + 2.5%};
+        }
+      }
+      &.animate {
+        top: 8%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      &.active {
+        top: 8%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 75%;
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        left: -100%;
+        height: 100%;
+        top: 0;
+        clip-path: polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0% 0%);
+        background: color(red);
+        z-index: -1;
+        transition: all 0.45s cubic-bezier(0.86, 0, 0.07, 1);
+      }
+      &:hover {
+        color: color(white);
+        &::before {
+          left: -2%;
+        }
+      }
+    }
+
+    &.active {
+      .btn:not(.active) {
+        opacity: 0;
+        width: 0;
+        visibility: hidden;
+      }
+      .btn.active {
+        overflow: hidden;
+        &::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          left: 100%;
+          height: 100%;
+          top: 0;
+          clip-path: polygon(100% 0%, 100% 100%, 10% 100%, 0% 50%, 10% 0%);
+          background: color(red);
+          z-index: -1;
+          transition: all 0.45s cubic-bezier(0.86, 0, 0.07, 1);
+        }
+        &::before {
+          content: none;
+        }
+        &:hover {
+          &::after {
+            left: 0%;
+          }
+        }
+      }
+    }
+  }
+  .word-list {
+    overflow-y: scroll;
+    height: 75vh;
+    position: absolute;
+    top: 15%;
+    left: 15%;
+    width: 70%;
+    margin: auto;
+    z-index: 150;
+    div {
+      opacity: 0;
+      animation: 0.2s fadeInTop forwards ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &:nth-child(1) {
+        border-bottom: 1px color(thirdColor) solid;
+        p {
+          font-weight: bold;
+        }
+      }
+      p {
+        width: 50%;
+        text-align: center;
+        padding-bottom: 0.5em;
+        &:nth-child(1) {
+          border-right: 1px color(thirdColor) solid;
+        }
+        &:nth-child(2) {
+          color: color(red);
+        }
+      }
+    }
+    @for $i from 1 to 25 {
+      div:nth-child(#{$i}) {
+        animation-delay: #{$i * 0.05}s;
+      }
+    }
+  }
+  .scroll-arrows {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    .fa-chevron-down {
+      display: block;
+      font-size: 1.2em;
+      color: color(thirdColor);
+      animation: 3s scrollDown infinite ease;
+      &:nth-child(1) {
+        animation-delay: 0.75s;
+        position: absolute;
+        top: -10px;
+      }
+    }
+  }
+}
+::-webkit-scrollbar {
+  width: 0px;
+  background: transparent;
 }

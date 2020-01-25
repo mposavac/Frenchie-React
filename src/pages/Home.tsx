@@ -15,8 +15,8 @@ const Home: React.FC<{}> = () => {
   const [redirecting, setRedirecting] = useState<any>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [loginMenuOpen, setLoginMenuOpen] = useState<boolean>(false);
-  const isLogin = useSelector<any, string | null>(state =>
-    state.firebase.auth.uid ? state.firebase.auth.uid : null
+  const isLogin = useSelector<any, boolean>(state =>
+    state.firebase.auth.uid ? state.firebase.auth.uid : false
   );
   const dispatch = useDispatch();
   const handleAnimation = (e: any) => {
@@ -131,10 +131,13 @@ const Home: React.FC<{}> = () => {
               Add new
             </div>
           </div>
+          {returnContainers(1)}
         </div>
       )}
+
       <LoginScreen
         show={loginMenuOpen}
+        isLogin={isLogin}
         handleLoginMenu={handleLoginMenu}
         showBackside={showBackside}
       />

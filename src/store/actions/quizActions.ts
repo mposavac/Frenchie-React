@@ -1,49 +1,34 @@
-import Papa from "papaparse";
+import { Dispatch } from "redux";
 
-import adjectives from "../../assets/adjectives.csv";
-import nouns from "../../assets/nouns.csv";
-import verbs from "../../assets/verbs.csv";
+import adjectives from "../../assets/adjectives.json";
+import nouns from "../../assets/nouns.json";
+import verbs from "../../assets/verbs.json";
+import { IQuestion, IOptions } from "../../types/Quiz.js";
 
-export const getQuestions = options => {
-  return async dispatch => {
+export const getQuestions = (options: IOptions | null) => {
+  return async (dispatch: Dispatch) => {
     if (options) {
-      let randomIndexes = [];
-      let parsedWords = [];
-      let quizWords = [];
+      let randomIndexes: Array<number> = [];
+      let parsedWords: Array<IQuestion | Array<IQuestion> | any> = [];
+      let quizWords: Array<IQuestion> = [];
 
-      const generateRandom = (length, maxNumber, array) => {
+      const generateRandom = (
+        length: number,
+        maxNumber: number,
+        array: Array<number>
+      ) => {
         while (array.length < length) {
           let number = Math.floor(Math.random() * maxNumber);
           if (!array.includes(number)) array.push(number);
         }
       };
 
-      const parseFile = file => {
-        return new Promise(resolve => {
-          Papa.parse(file, {
-            header: true,
-            download: true,
-            skipEmptyLines: true,
-            encoding: "UTF-8",
-            complete: results => {
-              resolve(results.data.slice(0, 200));
-            }
-          });
-        });
-      };
+      if (options.adjectives.checked) parsedWords.push(adjectives);
 
-      if (options.adjectives.checked) {
-        let parsedData = await parseFile(adjectives);
-        parsedWords.push(parsedData);
-      }
-      if (options.nouns.checked) {
-        let parsedData = await parseFile(nouns);
-        parsedWords.push(parsedData);
-      }
-      if (options.verbs.checked) {
-        let parsedData = await parseFile(verbs);
-        parsedWords.push(parsedData);
-      }
+      if (options.nouns.checked) parsedWords.push(nouns);
+
+      if (options.verbs.checked) parsedWords.push(verbs);
+
       //Merge all the arrays into one array
       parsedWords = Array.prototype.concat.apply([], parsedWords);
 
@@ -53,19 +38,17 @@ export const getQuestions = options => {
 
       //Get transaltion and random incorrect answers
       for (let obj of quizWords) {
-        let firstLetter = obj["correct_answer"][0];
-        let similar_words = [];
-        let incorrect_answers = [];
+        let firstLetter: string = obj["word"][0];
+        let similar_words: Array<string> = [];
+        let incorrect_answers: Array<string> = [];
         for (let word of parsedWords) {
-          if (
-            word["correct_answer"][0] === firstLetter &&
-            obj["correct_answer"] !== word["correct_answer"]
-          )
-            similar_words.push(word["correct_answer"]);
+          if (word["word"][0] === firstLetter && obj["word"] !== word["word"])
+            similar_words.push(word["word"]);
         }
+
         //Add incorrrect for the one which doesn't have enough with same later
         if (similar_words.length < 3) {
-          let random_incorrect_indexes = [];
+          let random_incorrect_indexes: Array<number> = [];
           generateRandom(
             3 - similar_words.length,
             parsedWords.length,
@@ -73,13 +56,13 @@ export const getQuestions = options => {
           );
 
           for (let index of random_incorrect_indexes)
-            incorrect_answers.push(parsedWords[index]["correct_answer"]);
+            incorrect_answers.push(parsedWords[index]["word"]);
 
           incorrect_answers = incorrect_answers.concat(similar_words);
         }
         //Random pick 3 words from same_letter_words
         else {
-          let random_similar_indexes = [];
+          let random_similar_indexes: Array<number> = [];
           generateRandom(3, similar_words.length, random_similar_indexes);
 
           for (let index of random_similar_indexes)
@@ -87,13 +70,15 @@ export const getQuestions = options => {
         }
 
         obj["incorrect_answers"] = incorrect_answers;
-
+        /*
         fetch(
           `https://translate.yandex.net/api/v1.5/tr.json/translate?key=${process.env.REACT_APP_TRANSLATION_API_KEY}&text=${obj["correct_answer"]}&lang=fr-en`
         )
           .then(res => res.json())
           .then(translation => (obj["translation"] = translation.text[0]));
+          */
       }
+      console.log(quizWords);
       dispatch({ type: "QUESTION_RESPONSE", questions: quizWords });
     } else dispatch({ type: "QUESTION_RESPONSE", questions: [] });
   };

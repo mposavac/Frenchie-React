@@ -81,16 +81,22 @@
 
 @keyframes sizeInAdd {
   from {
-    transform: rotate(0deg) scale(5);
-    height: 100%;
-    width: 100%;
+    clip-path: polygon(100% 0, 125% 50%, 100% 100%, 0% 100%, 0% 0%);
+    background: rgba(color(white), 1);
   }
   to {
-    top: -25.4vw;
-    right: 22.9vw;
-    transform: rotate(-45deg) scale(1);
-    height: calc(16vw * 6);
-    width: calc(16vw * 6);
+    clip-path: polygon(70% 0, 95% 50%, 70% 100%, 0% 100%, 0% 0%);
+    background: rgba(color(white), 0.9);
+  }
+}
+@keyframes sizeOutAdd {
+  from {
+    clip-path: polygon(70% 0, 95% 50%, 70% 100%, 0% 100%, 0% 0%);
+    background: rgba(color(white), 0.9);
+  }
+  to {
+    clip-path: polygon(100% 0, 125% 50%, 100% 100%, 0% 100%, 0% 0%);
+    background: rgba(color(white), 1);
   }
 }
 @keyframes sizeInQuiz {
@@ -116,18 +122,26 @@
 
 @keyframes sizeInOverview {
   from {
-    transform: rotate(0deg) scale(5);
-    height: 100%;
-    width: 100%;
+    clip-path: polygon(-35% 50%, 50% -85%, 135% 50%, 50% 185%);
+    background: rgba(color(white), 1);
   }
   to {
-    top: -50vh;
-    right: 0;
-    transform: rotate(-45deg) scale(1);
-    height: calc(16vw * 6);
-    width: calc(16vw * 6);
+    clip-path: polygon(-10% 50%, 50% -60%, 110% 50%, 50% 160%);
+    background: rgba(color(white), 0.9);
   }
 }
+
+@keyframes sizeOutOverview {
+  from {
+    clip-path: polygon(-10% 50%, 50% -60%, 110% 50%, 50% 160%);
+    background: rgba(color(white), 0.9);
+  }
+  to {
+    clip-path: polygon(-35% 50%, 50% -85%, 135% 50%, 50% 185%);
+    background: rgba(color(white), 1);
+  }
+}
+
 @keyframes fadeIn {
   to {
     opacity: 1;
@@ -175,11 +189,43 @@
   }
 }
 
+@keyframes zoomInBtn {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+    width: 0%;
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    width: 70%;
+  }
+}
+
 @keyframes timerProgress {
   from {
     top: -100%;
   }
   to {
     top: 0%;
+  }
+}
+
+@keyframes scrollDown {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translateY(-50%);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1) translateY(0%);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1) translateY(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.7) translateY(100%);
   }
 }

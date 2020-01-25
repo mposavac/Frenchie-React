@@ -39,8 +39,8 @@ export interface IPropsInputField {
 }
 
 export interface IQuestion {
-  correct_answer: string;
-  incorrect_answers: Array<string>;
+  word: string;
+  incorrect_answers?: Array<string>;
   translation: string;
 }
 

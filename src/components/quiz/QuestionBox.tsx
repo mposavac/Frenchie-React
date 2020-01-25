@@ -18,12 +18,12 @@ const QuestionBox: React.FC<IPropsQBox> = ({
   useEffect(() => {
     setIsAnswered(false);
     setSelectedIndex(null);
-    let answers: Array<string> = question.incorrect_answers.concat(
-      question.correct_answer
-    );
+    let answers: Array<string> = question.incorrect_answers
+      ? question.incorrect_answers.concat(question.word)
+      : [];
     let randomizedAnswers: Array<string> = _.shuffle(answers);
     setAnswers(randomizedAnswers);
-    setCorrectIndex(randomizedAnswers.indexOf(question.correct_answer));
+    setCorrectIndex(randomizedAnswers.indexOf(question.word));
   }, [question]);
 
   useEffect(() => {
@@ -31,6 +31,7 @@ const QuestionBox: React.FC<IPropsQBox> = ({
       handleScore(timer, correctIndex === selectedIndex);
       setTimer(0);
     }
+    // eslint-disable-next-line
   }, [isAnswered]);
 
   useEffect(() => {
@@ -87,10 +88,7 @@ const QuestionBox: React.FC<IPropsQBox> = ({
             {question.translation[0].toUpperCase() +
               question.translation.slice(1)}
           </p>
-          <p>
-            {question.correct_answer[0].toUpperCase() +
-              question.correct_answer.slice(1)}
-          </p>
+          <p>{question.word[0].toUpperCase() + question.word.slice(1)}</p>
           <button
             disabled={!isAnswered}
             onClick={handleNext}
