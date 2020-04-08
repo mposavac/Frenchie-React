@@ -1,5 +1,5 @@
-import { QUESTION_RESPONSE, QuizActionTypes } from "../../types/actions";
-import { IQuizState } from "../../types/Quiz";
+import { QUESTION_RESPONSE, QuizActionTypes } from '../../types/actions';
+import { IQuizState } from '../../types/Quiz';
 
 const initialState: IQuizState = { questions: [] };
 

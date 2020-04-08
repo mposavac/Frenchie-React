@@ -1,75 +1,42 @@
-import React from "react";
+import React from 'react';
 
-import { IPropsQForm } from "../../types/Quiz";
+import { IPropsQForm } from '../../types/Quiz';
+import RadioBtnInput from './RadioBtnInput';
 
 const QuestionForm: React.FC<IPropsQForm> = ({
   prepareQuestions,
   questionsLoaded,
   options,
-  handleOptions
+  handleOptions,
 }) => {
   return (
     <form
       onSubmit={prepareQuestions}
-      className={questionsLoaded ? "dimmed" : ""}
+      className={questionsLoaded ? 'dimmed quiz-form' : 'quiz-form'}
     >
       <h2>Check category: </h2>
       <div className="form-checkboxes">
-        <label>
-          <input
-            type="checkbox"
-            name="adjectives"
-            value="adjectives"
-            checked={options.adjectives.checked}
-            onChange={handleOptions}
-          />
-          <div>
-            <svg viewBox="0 0 44 44">
-              <path
-                d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758"
-                transform="translate(-2.000000, -2.000000)"
-              ></path>
-            </svg>
-          </div>
-          <span>Ajdectives</span>
-        </label>
-        <label>
-          <input
-            type="checkbox"
-            name="nouns"
-            value="nouns"
-            checked={options.nouns.checked}
-            onChange={handleOptions}
-          />
-          <div>
-            <svg viewBox="0 0 44 44">
-              <path
-                d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758"
-                transform="translate(-2.000000, -2.000000)"
-              ></path>
-            </svg>
-          </div>
-          <span>Nouns</span>
-        </label>
-
-        <label>
-          <input
-            type="checkbox"
-            name="verbs"
-            value="verbs"
-            checked={options.verbs.checked}
-            onChange={handleOptions}
-          />
-          <div>
-            <svg viewBox="0 0 44 44">
-              <path
-                d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758"
-                transform="translate(-2.000000, -2.000000)"
-              ></path>
-            </svg>
-          </div>
-          Verbs
-        </label>
+        <RadioBtnInput
+          isChecked={options.adjectives.checked}
+          option="adjectives"
+          handleOptions={handleOptions}
+        />
+        <RadioBtnInput
+          isChecked={options.nouns.checked}
+          option="nouns"
+          handleOptions={handleOptions}
+        />
+        <RadioBtnInput
+          isChecked={options.verbs.checked}
+          option="verbs"
+          handleOptions={handleOptions}
+        />
+        <RadioBtnInput
+          isChecked={options.custom_words.checked}
+          option="custom_words"
+          title="Your words"
+          handleOptions={handleOptions}
+        />
       </div>
 
       <h2>Number of questions: </h2>

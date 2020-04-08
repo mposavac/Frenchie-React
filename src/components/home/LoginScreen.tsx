@@ -1,49 +1,44 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useTransition, animated } from "react-spring";
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useTransition, animated } from 'react-spring';
 
-import { IPropsHLogin } from "../../types/Home";
-import InputField from "./InputField";
-import { signUp, logIn } from "../../store/actions/authActions";
-import Loading from "../Loading";
+import { IPropsHLogin } from '../../types/Home';
+import InputField from './InputField';
+import { signUp, logIn } from '../../store/actions/authActions';
+import Loading from '../Loading';
 
-const LoginScreen: React.FC<IPropsHLogin> = ({
-  show,
-  isLogin,
-  handleLoginMenu,
-  showBackside
-}) => {
-  const [username, setUsername] = useState<string>("");
-  const [pswd, setPswd] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [pswdRepeat, setPswdRepeat] = useState<string>("");
+const LoginScreen: React.FC<IPropsHLogin> = ({ show, isLogin, handleLoginMenu, showBackside }) => {
+  const [username, setUsername] = useState<string>('');
+  const [pswd, setPswd] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [pswdRepeat, setPswdRepeat] = useState<string>('');
   const [loginSide, setloginSide] = useState<boolean>(true);
   const [animate, setAnimate] = useState<boolean>(false);
   const [loggingIn, setLoggingIn] = useState<boolean>(false);
   const [errMsg, setErrMsg] = useState<string | null>(null);
-  const errResponse = useSelector<any, any>(state => state.auth.message);
+  const errResponse = useSelector<any, any>((state) => state.auth.message);
   const dispatch = useDispatch();
 
   const transition = useTransition(show, null, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
-    leave: { opacity: 0 }
+    leave: { opacity: 0 },
   });
   useEffect(() => {
-    setUsername("");
-    setEmail("");
-    setPswd("");
-    setPswdRepeat("");
+    setUsername('');
+    setEmail('');
+    setPswd('');
+    setPswdRepeat('');
     setErrMsg(null);
     setLoggingIn(false);
   }, [show]);
 
   const handleInput = (e: any) => {
     const id: string = e.target.id;
-    if (id === "username") setUsername(e.target.value);
-    else if (id === "pswd") setPswd(e.target.value);
-    else if (id === "email") setEmail(e.target.value);
-    else if (id === "pswdRepeat") setPswdRepeat(e.target.value);
+    if (id === 'username') setUsername(e.target.value);
+    else if (id === 'pswd') setPswd(e.target.value);
+    else if (id === 'email') setEmail(e.target.value);
+    else if (id === 'pswdRepeat') setPswdRepeat(e.target.value);
   };
 
   useEffect(() => {
@@ -81,7 +76,7 @@ const LoginScreen: React.FC<IPropsHLogin> = ({
       dispatch(signUp({ username, email, password: pswd }));
       setLoggingIn(true);
       //handleLoginMenu();
-    } else setErrMsg("Please repeat password correctly.");
+    } else setErrMsg('Please repeat password correctly.');
   };
 
   return (
@@ -90,13 +85,8 @@ const LoginScreen: React.FC<IPropsHLogin> = ({
         ({ item, props, key }) =>
           item && (
             <animated.div style={props} key={key}>
-              <div
-                className={animate ? "login-screen animate" : "login-screen"}
-              >
-                <i
-                  className="fas fa-arrow-circle-left"
-                  onClick={handleLoginMenu}
-                />
+              <div className={animate ? 'login-screen animate' : 'login-screen'}>
+                <i className="fas fa-arrow-circle-left" onClick={handleLoginMenu} />
                 {loginSide ? (
                   <form className="login" onSubmit={submitLogin}>
                     <h2>Login to your account</h2>
@@ -159,12 +149,12 @@ const LoginScreen: React.FC<IPropsHLogin> = ({
                   </form>
                 )}
                 <button className="change-btn" onClick={changeLoggin}>
-                  {loginSide ? "Create an account." : "Login to your account."}
+                  {loginSide ? 'Create an account.' : 'Login to your account.'}
                 </button>
               </div>
               <Loading isLoading={loggingIn} />
             </animated.div>
-          )
+          ),
       )}
     </React.Fragment>
   );

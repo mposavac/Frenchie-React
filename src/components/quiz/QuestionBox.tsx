@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
-import _ from "lodash";
+import React, { useState, useEffect } from 'react';
+import _ from 'lodash';
 
-import { IPropsQBox } from "../../types/Quiz";
+import { IPropsQBox } from '../../types/Quiz';
 
 const QuestionBox: React.FC<IPropsQBox> = ({
   question,
   questionIndex,
   handleNext,
-  handleScore
+  handleScore,
 }) => {
   const [answers, setAnswers] = useState<Array<string>>([]);
   const [correctIndex, setCorrectIndex] = useState<number | null>(null);
@@ -59,9 +59,9 @@ const QuestionBox: React.FC<IPropsQBox> = ({
   };
 
   const getStyle = (index: number) => {
-    if (isAnswered && correctIndex === index) return "correct";
-    else if (isAnswered && selectedIndex === index) return "incorrect";
-    return "";
+    if (isAnswered && correctIndex === index) return 'correct';
+    else if (isAnswered && selectedIndex === index) return 'incorrect';
+    return '';
   };
 
   console.log(question);
@@ -73,7 +73,7 @@ const QuestionBox: React.FC<IPropsQBox> = ({
           answers.map((answer: string, i: number) => (
             <p
               key={answer}
-              className={getStyle(i) + " question"}
+              className={getStyle(i) + ' question'}
               id={i.toString()}
               onClick={checkAnswer}
             >
@@ -84,16 +84,9 @@ const QuestionBox: React.FC<IPropsQBox> = ({
 
       {isAnswered && (
         <div className="question-recap">
-          <p>
-            {question.translation[0].toUpperCase() +
-              question.translation.slice(1)}
-          </p>
+          <p>{question.translation[0].toUpperCase() + question.translation.slice(1)}</p>
           <p>{question.word[0].toUpperCase() + question.word.slice(1)}</p>
-          <button
-            disabled={!isAnswered}
-            onClick={handleNext}
-            className="btn-next"
-          >
+          <button disabled={!isAnswered} onClick={handleNext} className="btn-next">
             NEXT
           </button>
         </div>

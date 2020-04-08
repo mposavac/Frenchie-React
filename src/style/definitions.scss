@@ -13,11 +13,24 @@ $colors: (
   @return map-get($colors, $color);
 }
 
+$desktop: 1100px;
 $tablet: 850px;
 $mobile: 400px;
 
 @mixin mobile {
   @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (max-width: $desktop) {
     @content;
   }
 }

@@ -2,6 +2,7 @@ export interface IOptions {
   adjectives: IChecked;
   nouns: IChecked;
   verbs: IChecked;
+  custom_words: IChecked;
   numOfQuestions: number;
 }
 
@@ -46,4 +47,16 @@ export interface IQuestion {
 
 export interface IQuizState {
   questions: IQuestion[];
+}
+
+export interface IPropsQRadioBtnInput {
+  isChecked: boolean;
+  option: string;
+  title?: string;
+  handleOptions: (e: any) => void;
+}
+
+export interface IQActionCustomWords {
+  translation: string;
+  word: Array<string> | string;
 }

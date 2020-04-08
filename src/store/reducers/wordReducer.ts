@@ -1,5 +1,5 @@
-import { WordsFetchActionTypes, WORDS_FETCHED } from "../../types/actions";
-import { IQuestion } from "../../types/Quiz";
+import { WordsFetchActionTypes, WORDS_FETCHED } from '../../types/actions';
+import { IQuestion } from '../../types/Quiz';
 
 const initialState: Array<IQuestion> = [];
 

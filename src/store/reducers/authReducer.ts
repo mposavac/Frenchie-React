@@ -1,11 +1,7 @@
-import {
-  LOGIN_ERROR,
-  SIGNUP_ERROR,
-  AuthActionTypes
-} from "../../types/actions";
-import { IErrorResponse } from "../../types/Home";
+import { LOGIN_ERROR, SIGNUP_ERROR, AuthActionTypes } from '../../types/actions';
+import { IErrorResponse } from '../../types/Home';
 
-const initState: IErrorResponse = { code: "", message: undefined };
+const initState: IErrorResponse = { code: '', message: undefined };
 
 const authReducer = (state = initState, action: AuthActionTypes) => {
   switch (action.type) {

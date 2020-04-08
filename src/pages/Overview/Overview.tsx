@@ -1,36 +1,31 @@
-import React, { useState } from "react";
-import { Redirect } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 
-import WordList from "../components/overview/WordList";
-import { fetchWords } from "../store/actions/overviewActions";
-import { IQuestion } from "../types/Quiz";
-import Grammar from "../components/overview/Grammar";
-import LoginScreen from "../components/home/LoginScreen";
+import WordList from '../../components/overview/WordList';
+import { fetchWords } from '../../store/actions/overviewActions';
+import { IQuestion } from '../../types/Quiz';
+import Grammar from '../../components/overview/Grammar';
+import LoginScreen from '../../components/home/LoginScreen';
 
 const Overview: React.FC<{}> = () => {
   const [animate, setAnimate] = useState<boolean | string>(false);
   const [active, setActive] = useState<boolean | string>(false);
-  const [redirecting, setRedirecting] = useState<boolean>(false);
-  const words = useSelector<any, Array<IQuestion>>(state => state.words);
-  const isLogin = useSelector<any, boolean>(state => state.firebase.auth.uid);
+  const words = useSelector<any, Array<IQuestion>>((state) => state.words);
+  const isLogin = useSelector<any, boolean>((state) => state.firebase.auth.uid);
   const dispatch = useDispatch();
+  const history = useHistory();
 
-  const categories: Array<string> = [
-    "Adjectives",
-    "Nouns",
-    "Verbs",
-    "Your words",
-    "Grammar"
-  ];
+  const categories: Array<string> = ['Adjectives', 'Nouns', 'Verbs', 'Your words', 'Grammar'];
 
   const handleCategory = (e: any) => {
     const name: string = e.target.id;
     if (active === name) {
       setActive(false);
       setAnimate(false);
+      dispatch(fetchWords('null'));
     } else {
-      if (name === categories[3] && !isLogin) setActive("Login Menu");
+      if (name === categories[3] && !isLogin) setActive('Login Menu');
       else if (name !== categories[4]) {
         setAnimate(name);
         dispatch(fetchWords(name));
@@ -52,35 +47,30 @@ const Overview: React.FC<{}> = () => {
   };
 
   const redirectHome = () => {
-    setAnimate("Redirect");
+    setAnimate('Redirect');
     setActive(false);
-    setTimeout(() => setRedirecting(true), 750);
+    setTimeout(() => history.push('/'), 750);
   };
 
   const btnClass = (i: number): string => {
-    if (categories[i] === active) return "btn active";
-    else if (categories[i] === animate) return "btn animate";
-    return "btn";
+    if (categories[i] === active) return 'btn active';
+    else if (categories[i] === animate) return 'btn animate';
+    return 'btn';
   };
 
   return (
     <div className="overview">
       <div
         className={
-          animate === "Redirect"
-            ? "overview-square-backgorund redirect-anim"
-            : "overview-square-backgorund"
+          animate === 'Redirect'
+            ? 'overview-square-backgorund redirect-anim'
+            : 'overview-square-backgorund'
         }
       />
       <i className="fas fa-home" onClick={redirectHome} />
-      <div className={active ? "categories active" : "categories"}>
+      <div className={active ? 'categories active' : 'categories'}>
         {categories.map((element: string, i: number) => (
-          <div
-            key={i}
-            className={btnClass(i)}
-            onClick={handleCategory}
-            id={element}
-          >
+          <div key={i} className={btnClass(i)} onClick={handleCategory} id={element}>
             {element}
           </div>
         ))}
@@ -88,12 +78,11 @@ const Overview: React.FC<{}> = () => {
       {active && active !== categories[4] && <WordList words={words} />}
       {active && active === categories[4] && <Grammar words={words} />}
       <LoginScreen
-        show={active === "Login Menu"}
+        show={active === 'Login Menu'}
         isLogin={isLogin}
         handleLoginMenu={handleLoginMenu}
         showBackside={() => {}}
       />
-      {redirecting && <Redirect to="/" />}
     </div>
   );
 };

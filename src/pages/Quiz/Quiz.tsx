@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { Redirect } from "react-router-dom";
-import { IOptions } from "../types/Quiz";
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { IOptions } from '../../types/Quiz';
 
-import { getQuestions } from "../store/actions/quizActions";
-import QuestionForm from "../components/quiz/QuestionForm";
-import QuestionBox from "../components/quiz/QuestionBox";
-import Loading from "../components/Loading";
-import QuizRecap from "../components/quiz/QuizRecap";
+import { getQuestions } from '../../store/actions/quizActions';
+import QuestionForm from '../../components/quiz/QuestionForm';
+import QuestionBox from '../../components/quiz/QuestionBox';
+import Loading from '../../components/Loading';
+import QuizRecap from '../../components/quiz/QuizRecap';
+import LoginScreen from '../../components/home/LoginScreen';
 
 const Quiz: React.FC<{}> = () => {
   const [isFetching, setIsFetching] = useState<boolean>(false);
@@ -17,36 +18,41 @@ const Quiz: React.FC<{}> = () => {
     adjectives: { checked: true },
     nouns: { checked: false },
     verbs: { checked: false },
-    numOfQuestions: 20
+    custom_words: { checked: false },
+    numOfQuestions: 20,
   });
   const [score, setScore] = useState<number>(0);
   const [isAnswered, setIsAnswered] = useState<boolean>(true);
   const [animate, setAnimate] = useState<boolean>(false);
-  const [redirecting, setRedirecting] = useState<boolean>(false);
   const [numOfCorrect, setNumOfCorrect] = useState<number>(0);
-  const questions = useSelector<any, any>(state => state.quiz.questions);
-
+  const [showLoginMenu, setShowLogin] = useState<boolean>(false);
+  const questions = useSelector<any, any>((state) => state.quiz.questions);
+  const isLogin = useSelector<any, boolean>((state) => state.firebase.auth.uid || false);
+  const history = useHistory();
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (questions.length > 0 && isFetching)
-      setTimeout(() => setIsFetching(false), 500);
+    if (questions.length > 0 && isFetching) setTimeout(() => setIsFetching(false), 500);
   }, [questions, isFetching]);
 
   useEffect(() => {
     dispatch(getQuestions(null));
   }, [dispatch]);
 
-  const prepareQuestions = (e: any) => {
+  const prepareQuestions = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
 
     if (
       options.adjectives.checked ||
       options.nouns.checked ||
-      options.verbs.checked
+      options.verbs.checked ||
+      options.custom_words.checked
     ) {
-      setIsFetching(true);
-      dispatch(getQuestions(options));
+      if (options.custom_words.checked && !isLogin) setShowLogin(true);
+      else {
+        setIsFetching(true);
+        dispatch(getQuestions(options));
+      }
     }
   };
 
@@ -55,17 +61,17 @@ const Quiz: React.FC<{}> = () => {
     setIsAnswered(false);
   };
 
-  const handleOptions = (e: any) => {
+  const handleOptions = (e: React.FormEvent<HTMLFormElement>) => {
     if (questions.length > 0) {
       dispatch(getQuestions(null));
       setIsFetching(false);
     }
     let newOptions =
-      e.target.name === "numOfQuestions"
-        ? { ...options, numOfQuestions: parseInt(e.target.value) }
+      e.currentTarget.name === 'numOfQuestions'
+        ? { ...options, numOfQuestions: parseInt(e.currentTarget.value) }
         : {
             ...options,
-            [e.target.name]: { checked: e.target.checked }
+            [e.currentTarget.name]: { checked: e.currentTarget.checked },
           };
     setOptions(newOptions);
   };
@@ -94,33 +100,24 @@ const Quiz: React.FC<{}> = () => {
 
   const redirectHome = () => {
     setAnimate(true);
-    setTimeout(() => setRedirecting(true), 750);
+    setTimeout(() => history.push('/'), 750);
   };
-
+  const handleLoginMenu = () => {
+    setShowLogin(false);
+  };
   return (
     <div className="quiz">
       <Loading isLoading={isFetching} />
-      <div
-        className={
-          animate
-            ? "quiz-square-backgorund redirect-anim"
-            : "quiz-square-backgorund"
-        }
-      >
+      <div className={animate ? 'quiz-square-backgorund redirect-anim' : 'quiz-square-backgorund'}>
         {questions.length > 0 && questionIndex < options.numOfQuestions && (
-          <div
-            className={
-              !isAnswered ? "timer-indicator active" : "timer-indicator"
-            }
-          />
+          <div className={!isAnswered ? 'timer-indicator active' : 'timer-indicator'} />
         )}
       </div>
 
       {!isStarted || questionIndex === options.numOfQuestions ? (
         <i className="fas fa-home" onClick={redirectHome} />
       ) : null}
-      {redirecting && <Redirect to="/" />}
-      {!isStarted && (
+      {!isStarted && !showLoginMenu && (
         <QuestionForm
           prepareQuestions={prepareQuestions}
           questionsLoaded={isFetching || questions.length > 0}
@@ -145,7 +142,6 @@ const Quiz: React.FC<{}> = () => {
             handleNext={handleNext}
             handleScore={handleScore}
           />
-          <p className="credits">TRANSLATIONS BY: translate.yandex.com</p>
         </React.Fragment>
       )}
       <QuizRecap
@@ -154,6 +150,12 @@ const Quiz: React.FC<{}> = () => {
         numOfCorrect={numOfCorrect}
         numOfQuestions={options.numOfQuestions}
         handleRetake={handleRetake}
+      />
+      <LoginScreen
+        show={showLoginMenu}
+        isLogin={isLogin}
+        handleLoginMenu={handleLoginMenu}
+        showBackside={() => {}}
       />
     </div>
   );

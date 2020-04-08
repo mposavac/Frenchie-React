@@ -19,6 +19,10 @@
     left: -25%;
     width: 100%;
     height: 100%;
+    @include mobile {
+      top: -25%;
+      left: -130%;
+    }
     opacity: 0;
     transition: 0.5s;
     &.active {
@@ -35,6 +39,11 @@
     grid-row-gap: 0.4rem;
     transform: rotate(45deg);
     perspective: 800px;
+    @include desktop {
+      top: 62px;
+      left: -133px;
+    }
+    /*
     @include mobile {
       display: flex;
       position: fixed;
@@ -49,20 +58,27 @@
       height: 100%;
       justify-content: space-evenly;
       align-items: flex-end;
-    }
+    }*/
     .container {
       //position: relative;
+      //overflow: hidden;
       width: 16vw;
       height: 16vw;
+      min-width: 200px;
+      min-height: 200px;
       transform-origin: right;
       background: color(white);
       border: 2px color(white) solid;
       text-align: center;
-      //overflow: hidden;
       transform: rotateY(90deg);
       opacity: 0;
       animation: 0.5s ease forwards;
       flex: 1 1 0;
+      @include desktop {
+        min-width: 150px;
+        min-height: 150px;
+      }
+      /*
       @include mobile {
         &:nth-child(21) {
           order: 3;
@@ -77,7 +93,7 @@
         }
         width: unset;
         height: 100px;
-      }
+      }*/
       &:nth-child(4),
       &:nth-child(6),
       &:nth-child(10),
@@ -85,9 +101,9 @@
       &:nth-child(16),
       &:nth-child(19) {
         animation-name: opacityAnimation1, unfold;
-        @include mobile {
+        /*@include mobile {
           display: none;
-        }
+        }*/
       }
 
       &:nth-child(1),
@@ -98,9 +114,9 @@
       &:nth-child(18),
       &:nth-child(20) {
         animation-name: opacityAnimation2, unfold;
-        @include mobile {
+        /*@include mobile {
           display: none;
-        }
+        }*/
       }
 
       &:nth-child(3),
@@ -111,9 +127,9 @@
       &:nth-child(22) {
         animation-name: opacityAnimation3, unfold;
         background: none;
-        @include mobile {
+        /*@include mobile {
           display: none;
-        }
+        }*/
       }
 
       &:nth-child(5),
@@ -142,7 +158,7 @@
         i {
           display: block;
         }
-        @include mobile {
+        /*@include mobile {
           display: block;
           position: relative;
           top: 50%;
@@ -153,7 +169,7 @@
           padding: 5px;
           clip-path: none;
           animation: fadingInMobile 0.4s ease-out forwards;
-        }
+        }*/
       }
       .menu.first-menu {
         animation-delay: 2.3s;

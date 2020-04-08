@@ -24,3 +24,10 @@ export interface IErrorResponse {
   code: string;
   message: string | undefined;
 }
+
+export interface IHomeProps {
+  isLoading: boolean;
+  animateIndex: number | undefined;
+  handleAnimation: (e: any) => void;
+  isLogin: boolean;
+}

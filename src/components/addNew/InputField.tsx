@@ -1,17 +1,12 @@
-import React from "react";
-import { IPropsInputField } from "../../types/Quiz";
+import React from 'react';
+import { IPropsInputField } from '../../types/Quiz';
 
-const InputField: React.FC<IPropsInputField> = ({
-  value,
-  setter,
-  id,
-  text
-}) => {
+const InputField: React.FC<IPropsInputField> = ({ value, setter, id, text }) => {
   return (
     <div className="input-field">
       <input
         type="text"
-        onChange={e => setter(e.target.value)}
+        onChange={(e) => setter(e.target.value)}
         id={id}
         value={value}
         autoComplete="off"
