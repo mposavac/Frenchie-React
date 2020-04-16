@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { IPropsHInput } from '../../types/Home';
+import { IPropsInputField } from '../../types/Home';
 
-const InputField: React.FC<IPropsHInput> = ({ type, id, value, name, icon, handleInput }) => {
+const InputField: React.FC<IPropsInputField> = ({ type, id, value, name, icon, handleInput }) => {
   return (
     <div className="input-field">
       <input type={type} id={id} value={value} onChange={handleInput} placeholder={name} required />

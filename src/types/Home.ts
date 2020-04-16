@@ -1,11 +1,11 @@
-export interface IPropsHLogin {
+export interface IPropsLoginScreen {
   show: boolean;
   isLogin: boolean;
   handleLoginMenu: () => void;
   showBackside: () => void;
 }
 
-export interface IPropsHInput {
+export interface IPropsInputField {
   type: string;
   id: string;
   value: string;
@@ -14,7 +14,7 @@ export interface IPropsHInput {
   handleInput: (e: any) => void;
 }
 
-export interface ISignupActionProps {
+export interface IUserData {
   username?: string;
   email: string;
   password: string;
@@ -25,9 +25,10 @@ export interface IErrorResponse {
   message: string | undefined;
 }
 
-export interface IHomeProps {
+export interface IPropsHome {
   isLoading: boolean;
   animateIndex: number | undefined;
   handleAnimation: (e: any) => void;
   isLogin: boolean;
+  isMobile: boolean;
 }

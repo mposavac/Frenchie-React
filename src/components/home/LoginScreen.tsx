@@ -2,12 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTransition, animated } from 'react-spring';
 
-import { IPropsHLogin } from '../../types/Home';
+import { IPropsLoginScreen } from '../../types/Home';
 import InputField from './InputField';
 import { signUp, logIn } from '../../store/actions/authActions';
 import Loading from '../Loading';
 
-const LoginScreen: React.FC<IPropsHLogin> = ({ show, isLogin, handleLoginMenu, showBackside }) => {
+const LoginScreen: React.FC<IPropsLoginScreen> = ({
+  show,
+  isLogin,
+  handleLoginMenu,
+  showBackside,
+}) => {
   const [username, setUsername] = useState<string>('');
   const [pswd, setPswd] = useState<string>('');
   const [email, setEmail] = useState<string>('');
@@ -16,7 +21,7 @@ const LoginScreen: React.FC<IPropsHLogin> = ({ show, isLogin, handleLoginMenu, s
   const [animate, setAnimate] = useState<boolean>(false);
   const [loggingIn, setLoggingIn] = useState<boolean>(false);
   const [errMsg, setErrMsg] = useState<string | null>(null);
-  const errResponse = useSelector<any, any>((state) => state.auth.message);
+  const errResponse = useSelector<any, string>((state) => state.auth.message);
   const dispatch = useDispatch();
 
   const transition = useTransition(show, null, {
@@ -33,12 +38,12 @@ const LoginScreen: React.FC<IPropsHLogin> = ({ show, isLogin, handleLoginMenu, s
     setLoggingIn(false);
   }, [show]);
 
-  const handleInput = (e: any) => {
-    const id: string = e.target.id;
-    if (id === 'username') setUsername(e.target.value);
-    else if (id === 'pswd') setPswd(e.target.value);
-    else if (id === 'email') setEmail(e.target.value);
-    else if (id === 'pswdRepeat') setPswdRepeat(e.target.value);
+  const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
+    const id: string = e.currentTarget.id;
+    if (id === 'username') setUsername(e.currentTarget.value);
+    else if (id === 'pswd') setPswd(e.currentTarget.value);
+    else if (id === 'email') setEmail(e.currentTarget.value);
+    else if (id === 'pswdRepeat') setPswdRepeat(e.currentTarget.value);
   };
 
   useEffect(() => {
@@ -64,13 +69,13 @@ const LoginScreen: React.FC<IPropsHLogin> = ({ show, isLogin, handleLoginMenu, s
     setErrMsg(null);
   };
 
-  const submitLogin = (e: any) => {
+  const submitLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoggingIn(true);
     dispatch(logIn({ email, password: pswd }));
   };
 
-  const submitSignUp = (e: any) => {
+  const submitSignUp = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (pswd === pswdRepeat) {
       dispatch(signUp({ username, email, password: pswd }));

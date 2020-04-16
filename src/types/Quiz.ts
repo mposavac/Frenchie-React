@@ -10,7 +10,7 @@ export interface IChecked {
   checked: boolean;
 }
 
-export interface IPropsQRecap {
+export interface IPropsQuizRecap {
   show: boolean;
   score: number;
   handleRetake: () => void;
@@ -18,14 +18,14 @@ export interface IPropsQRecap {
   numOfQuestions: number;
 }
 
-export interface IPropsQForm {
+export interface IPropsQuestionForm {
   prepareQuestions: (e: any) => void;
   questionsLoaded: boolean;
   options: IOptions;
   handleOptions: (e: any) => void;
 }
 
-export interface IPropsQBox {
+export interface IPropsQuestionBox {
   question: Readonly<IQuestion>;
   questionIndex: Readonly<number>;
   handleNext: () => void;
@@ -49,14 +49,9 @@ export interface IQuizState {
   questions: IQuestion[];
 }
 
-export interface IPropsQRadioBtnInput {
+export interface IPropsRadioBtnInput {
   isChecked: boolean;
   option: string;
   title?: string;
   handleOptions: (e: any) => void;
-}
-
-export interface IQActionCustomWords {
-  translation: string;
-  word: Array<string> | string;
 }

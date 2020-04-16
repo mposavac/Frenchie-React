@@ -109,6 +109,7 @@
     background: rgba(color(white), 0.9);
   }
 }
+
 @keyframes sizeOutQuiz {
   from {
     clip-path: polygon(100% 0%, 100% 100%, 30% 100%, 5% 50%, 30% 0);
@@ -142,6 +143,22 @@
   }
 }
 
+@keyframes sizeinMobile {
+  from {
+    background: rgba(color(white), 1);
+  }
+  to {
+    background: rgba(color(white), 0.8);
+  }
+}
+@keyframes sizeOutMobile {
+  from {
+    background: rgba(color(white), 0.8);
+  }
+  to {
+    background: rgba(color(white), 1);
+  }
+}
 @keyframes fadeIn {
   to {
     opacity: 1;
@@ -211,6 +228,15 @@
   }
 }
 
+@keyframes timerProgressMobile {
+  from {
+    right: -100%;
+  }
+  to {
+    right: 0%;
+  }
+}
+
 @keyframes scrollDown {
   0% {
     opacity: 0;
@@ -227,5 +253,24 @@
   100% {
     opacity: 0;
     transform: scale(0.7) translateY(100%);
+  }
+}
+
+@keyframes popInandOutMsg {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(100%);
   }
 }

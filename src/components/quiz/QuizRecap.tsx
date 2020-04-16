@@ -1,9 +1,9 @@
 import React from 'react';
 import { useTransition, animated } from 'react-spring';
 
-import { IPropsQRecap } from '../../types/Quiz';
+import { IPropsQuizRecap } from '../../types/Quiz';
 
-const QuizRecap: React.FC<IPropsQRecap> = ({
+const QuizRecap: React.FC<IPropsQuizRecap> = ({
   show,
   score,
   handleRetake,
@@ -29,7 +29,6 @@ const QuizRecap: React.FC<IPropsQRecap> = ({
       duration: 750,
     },
   });
-  console.log(show);
 
   return (
     <React.Fragment>

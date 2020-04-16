@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addWordToDatabase } from '../../store/actions/addFormActions';
 import InputField from '../../components/addNew/InputField';
 import LoginScreen from '../../components/home/LoginScreen';
+import { RootReducer } from '../../store/reducers/rootReducer';
 
 const AddForm: React.FC<{}> = () => {
   const [newWord, setNewWord] = useState<string>('');
@@ -13,8 +14,9 @@ const AddForm: React.FC<{}> = () => {
 
   const [animate, setAnimate] = useState<boolean>(false);
   const [showLoginMenu, setShowLogin] = useState<boolean>(false);
+  const [wordAddedMsg, setwordAddedMsg] = useState<string>('');
 
-  const isLogin = useSelector<any, boolean>((state) => state.firebase.auth.uid);
+  const isLogin = useSelector<RootReducer, boolean>((state) => state.firebase.auth.uid);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -25,15 +27,16 @@ const AddForm: React.FC<{}> = () => {
     setNewWord('');
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isLogin) {
       if (newWord.length > 0) addConjugation();
       if (conjugation.length > 0 && translation.length > 0) {
-        dispatch(addWordToDatabase({ conjugation, translation }));
+        dispatch(addWordToDatabase({ word: conjugation, translation }));
         setConjugation([]);
+        setwordAddedMsg(translation + ' is added to your words.');
         setTranslation('');
-        //TODO: PORUKA DA JE DODANO
+        setTimeout(() => setwordAddedMsg(''), 3100);
       }
     } else setShowLogin(true);
   };
@@ -90,6 +93,7 @@ const AddForm: React.FC<{}> = () => {
         >
           Add to Database
         </button>
+        <p className={wordAddedMsg ? 'response-msg' : ''}>{wordAddedMsg}</p>
       </form>
       <LoginScreen
         show={showLoginMenu}

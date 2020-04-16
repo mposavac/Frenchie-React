@@ -1,7 +1,7 @@
 import React from 'react';
-import { IPropsQRadioBtnInput } from '../../types/Quiz';
+import { IPropsRadioBtnInput } from '../../types/Quiz';
 
-const RadioBtnInput: React.FC<IPropsQRadioBtnInput> = ({
+const RadioBtnInput: React.FC<IPropsRadioBtnInput> = ({
   isChecked,
   option,
   title,

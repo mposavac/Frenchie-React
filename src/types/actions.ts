@@ -1,5 +1,5 @@
 import { IQuestion } from './Quiz';
-import { IAddFormActionProps } from './AddForm';
+import { IWordData } from './AddForm';
 
 /* AUTH ACTIONS */
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
@@ -38,7 +38,6 @@ export const NEWWORD_RESPONSE = 'WORD_ADDED';
 
 export interface NewWordResponseAction {
   type: typeof NEWWORD_RESPONSE;
-  //error
 }
 
 /* OVERVIEW ACTIONS */
@@ -46,7 +45,7 @@ export const WORDS_FETCHED = 'WORDS_FETCHED';
 
 export interface WordsFetchResponseAction {
   type: typeof WORDS_FETCHED;
-  words: Array<IQuestion> | Array<IAddFormActionProps>;
+  words: Array<IQuestion> | Array<IWordData>;
 }
 
 export type WordsFetchActionTypes = WordsFetchResponseAction;

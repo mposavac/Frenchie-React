@@ -7,19 +7,20 @@ import { fetchWords } from '../../store/actions/overviewActions';
 import { IQuestion } from '../../types/Quiz';
 import Grammar from '../../components/overview/Grammar';
 import LoginScreen from '../../components/home/LoginScreen';
+import { RootReducer } from '../../store/reducers/rootReducer';
 
 const Overview: React.FC<{}> = () => {
   const [animate, setAnimate] = useState<boolean | string>(false);
   const [active, setActive] = useState<boolean | string>(false);
-  const words = useSelector<any, Array<IQuestion>>((state) => state.words);
-  const isLogin = useSelector<any, boolean>((state) => state.firebase.auth.uid);
+  const words = useSelector<RootReducer, Array<IQuestion>>((state) => state.words);
+  const isLogin = useSelector<RootReducer, boolean>((state) => state.firebase.auth.uid);
   const dispatch = useDispatch();
   const history = useHistory();
 
   const categories: Array<string> = ['Adjectives', 'Nouns', 'Verbs', 'Your words', 'Grammar'];
 
-  const handleCategory = (e: any) => {
-    const name: string = e.target.id;
+  const handleCategory = (e: React.MouseEvent) => {
+    const name: string = e.currentTarget.id;
     if (active === name) {
       setActive(false);
       setAnimate(false);

@@ -1,4 +1,4 @@
-export interface IAddFormActionProps {
-  conjugation: Array<string>;
+export interface IWordData {
+  word: Array<string> | string;
   translation: string;
 }

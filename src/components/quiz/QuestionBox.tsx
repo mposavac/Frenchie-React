@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import _ from 'lodash';
 
-import { IPropsQBox } from '../../types/Quiz';
+import { IPropsQuestionBox } from '../../types/Quiz';
 
-const QuestionBox: React.FC<IPropsQBox> = ({
+const QuestionBox: React.FC<IPropsQuestionBox> = ({
   question,
   questionIndex,
   handleNext,

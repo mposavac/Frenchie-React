@@ -1,11 +1,12 @@
 import React from 'react';
-import { IHomeProps } from '../../types/Home';
+import { IPropsHome } from '../../types/Home';
 
-const DesktopHome: React.FC<IHomeProps> = ({
+const Home: React.FC<IPropsHome> = ({
   isLoading,
   animateIndex,
   handleAnimation,
   isLogin,
+  isMobile,
 }) => {
   const returnContainers = (numOfContainers: number) => {
     let output = [];
@@ -19,21 +20,26 @@ const DesktopHome: React.FC<IHomeProps> = ({
     <React.Fragment>
       {!isLoading && (
         <div className={animateIndex ? 'card-holder animate' : 'card-holder'}>
-          {returnContainers(4)}
+          {!isMobile && returnContainers(4)}
+
           <div className={'container menu-container ' + (animateIndex === 1 ? 'transition' : '')}>
             <div className="menu first-menu" id="1" onClick={handleAnimation}>
               <i className="fas fa-question" />
               Quiz
             </div>
           </div>
-          {returnContainers(3)}
+
+          {!isMobile && returnContainers(3)}
+
           <div className={'container menu-container ' + (animateIndex === 2 ? 'transition' : '')}>
             <div className="menu second-menu" id="2" onClick={handleAnimation}>
               <i className="fas fa-edit" />
               Overview
             </div>
           </div>
-          {returnContainers(6)}
+
+          {!isMobile && returnContainers(6)}
+
           <div
             className={
               'container menu-container ' +
@@ -55,18 +61,20 @@ const DesktopHome: React.FC<IHomeProps> = ({
               )}
             </div>
           </div>
-          {returnContainers(4)}
+
+          {!isMobile && returnContainers(4)}
+
           <div className={'container menu-container ' + (animateIndex === 3 ? 'transition' : '')}>
             <div className="menu third-menu" id="3" onClick={handleAnimation}>
               <i className="fas fa-pencil-alt" />
               Add new
             </div>
           </div>
-          {returnContainers(1)}
+          {!isMobile && returnContainers(1)}
         </div>
       )}
     </React.Fragment>
   );
 };
 
-export default DesktopHome;
+export default Home;

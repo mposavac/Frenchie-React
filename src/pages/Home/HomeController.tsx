@@ -6,9 +6,9 @@ import ReactPlayer from 'react-player';
 import { signOut } from '../../store/actions/authActions';
 import Loading from '../../components/Loading';
 import LoginScreen from '../../components/home/LoginScreen';
-import DesktopHome from './DesktopHome';
+import Home from './Home';
 import '../../style/home.scss';
-import MobileHome from './MobileHome';
+import { RootReducer } from '../../store/reducers/rootReducer';
 
 const HomeController: React.FC<{}> = () => {
   const [animateIndex, setAnimateIndex] = useState<number | undefined>(undefined);
@@ -16,7 +16,7 @@ const HomeController: React.FC<{}> = () => {
   const [loginMenuOpen, setLoginMenuOpen] = useState<boolean>(false);
   const [isMobile, setIsMobile] = useState<boolean>(false);
 
-  const isLogin = useSelector<any, boolean>((state) => state.firebase.auth.uid || false);
+  const isLogin = useSelector<RootReducer, boolean>((state) => state.firebase.auth.uid || false);
   const dispatch = useDispatch();
   const history = useHistory();
 
@@ -25,18 +25,18 @@ const HomeController: React.FC<{}> = () => {
     if (window.innerWidth < 400) setIsMobile(true);
   }, []);
 
-  const handleAnimation = (e: any) => {
-    setAnimateIndex(parseInt(e.target.id));
+  const handleAnimation = (e: React.FormEvent<HTMLFormElement>) => {
+    setAnimateIndex(parseInt(e.currentTarget.id));
     let redirectingTo: string;
-    if (e.target.id === '1') redirectingTo = '/quiz';
-    else if (e.target.id === '2') redirectingTo = '/overview';
-    else if (e.target.id === '3') redirectingTo = '/add';
+    if (e.currentTarget.id === '1') redirectingTo = '/quiz';
+    else if (e.currentTarget.id === '2') redirectingTo = '/overview';
+    else if (e.currentTarget.id === '3') redirectingTo = '/add';
 
-    if (e.target.id === '4' && isLogin) {
+    if (e.currentTarget.id === '4' && isLogin) {
       setAnimateIndex(undefined);
       dispatch(signOut());
       //ANIMACIJA LOADING
-    } else if (e.target.id === '4')
+    } else if (e.currentTarget.id === '4')
       setTimeout(() => {
         handleLoginMenu();
       }, 800);
@@ -54,7 +54,7 @@ const HomeController: React.FC<{}> = () => {
   };
 
   const screenSize = (): string => {
-    if (window.innerWidth < 400) return '350%';
+    if (isMobile) return '350%';
     return '150%';
   };
   return (
@@ -72,21 +72,13 @@ const HomeController: React.FC<{}> = () => {
         />
       </div>
 
-      {isMobile ? (
-        <MobileHome
-          isLoading={isLoading}
-          isLogin={isLogin}
-          handleAnimation={handleAnimation}
-          animateIndex={animateIndex}
-        />
-      ) : (
-        <DesktopHome
-          isLoading={isLoading}
-          isLogin={isLogin}
-          handleAnimation={handleAnimation}
-          animateIndex={animateIndex}
-        />
-      )}
+      <Home
+        isLoading={isLoading}
+        isLogin={isLogin}
+        handleAnimation={handleAnimation}
+        animateIndex={animateIndex}
+        isMobile={isMobile}
+      />
 
       <LoginScreen
         show={loginMenuOpen}

@@ -1,9 +1,9 @@
 import React from 'react';
 
-import { IPropsQForm } from '../../types/Quiz';
+import { IPropsQuestionForm } from '../../types/Quiz';
 import RadioBtnInput from './RadioBtnInput';
 
-const QuestionForm: React.FC<IPropsQForm> = ({
+const QuestionForm: React.FC<IPropsQuestionForm> = ({
   prepareQuestions,
   questionsLoaded,
   options,

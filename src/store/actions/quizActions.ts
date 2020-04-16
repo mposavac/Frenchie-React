@@ -3,11 +3,12 @@ import { Dispatch } from 'redux';
 import adjectives from '../../assets/adjectives.json';
 import nouns from '../../assets/nouns.json';
 import verbs from '../../assets/verbs.json';
-import { IQuestion, IOptions, IQActionCustomWords } from '../../types/Quiz.js';
+import { IQuestion, IOptions } from '../../types/Quiz.js';
 import { getUserWords } from '../../server functions/serverFunctions';
+import { IWordData } from '../../types/AddForm';
 
 export const getQuestions = (options: IOptions | null) => {
-  return async (dispatch: Dispatch, getState: any, { getFirestore }: any) => {
+  return async (dispatch: Dispatch, getState: Function, { getFirestore }: any) => {
     if (options) {
       let randomIndexes: Array<number> = [];
       let parsedWords: Array<IQuestion | Array<IQuestion> | any> = [];
@@ -27,10 +28,10 @@ export const getQuestions = (options: IOptions | null) => {
       if (options.verbs.checked) parsedWords.push(verbs);
 
       if (options.custom_words.checked) {
-        let custom_words: Array<IQActionCustomWords> = await getUserWords(getState, getFirestore);
+        let custom_words: Array<IWordData> = await getUserWords(getState, getFirestore);
         console.log(custom_words);
 
-        custom_words.forEach((object: IQActionCustomWords) => {
+        custom_words.forEach((object: IWordData) => {
           object.word = object.word[0];
         });
         parsedWords.push(custom_words);

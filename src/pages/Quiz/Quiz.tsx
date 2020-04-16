@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { IOptions } from '../../types/Quiz';
+import { IOptions, IQuestion } from '../../types/Quiz';
 
 import { getQuestions } from '../../store/actions/quizActions';
 import QuestionForm from '../../components/quiz/QuestionForm';
@@ -9,6 +9,7 @@ import QuestionBox from '../../components/quiz/QuestionBox';
 import Loading from '../../components/Loading';
 import QuizRecap from '../../components/quiz/QuizRecap';
 import LoginScreen from '../../components/home/LoginScreen';
+import { RootReducer } from '../../store/reducers/rootReducer';
 
 const Quiz: React.FC<{}> = () => {
   const [isFetching, setIsFetching] = useState<boolean>(false);
@@ -26,8 +27,8 @@ const Quiz: React.FC<{}> = () => {
   const [animate, setAnimate] = useState<boolean>(false);
   const [numOfCorrect, setNumOfCorrect] = useState<number>(0);
   const [showLoginMenu, setShowLogin] = useState<boolean>(false);
-  const questions = useSelector<any, any>((state) => state.quiz.questions);
-  const isLogin = useSelector<any, boolean>((state) => state.firebase.auth.uid || false);
+  const questions = useSelector<RootReducer, Array<IQuestion>>((state) => state.quiz.questions);
+  const isLogin = useSelector<RootReducer, boolean>((state) => state.firebase.auth.uid || false);
   const history = useHistory();
   const dispatch = useDispatch();
 
@@ -77,8 +78,8 @@ const Quiz: React.FC<{}> = () => {
   };
 
   const handleNext = () => {
-    setIndex(questionIndex + 1);
     setIsAnswered(false);
+    setTimeout(() => setIndex(questionIndex + 1), 100);
   };
 
   const handleScore = (timer: number, isCorrect: boolean) => {
