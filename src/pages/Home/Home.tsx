@@ -34,7 +34,7 @@ const Home: React.FC<IPropsHome> = ({
           <div className={'container menu-container ' + (animateIndex === 2 ? 'transition' : '')}>
             <div className="menu second-menu" id="2" onClick={handleAnimation}>
               <i className="fas fa-edit" />
-              Overview
+              All words
             </div>
           </div>
 

@@ -1,12 +1,13 @@
-@import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 $colors: (
   primary: #e3e7d3,
   secondary: #12355b,
-  thirdColor: #23395b,
+  thirdColor: #0055a4,
   white: #fff,
   black: #001514,
-  red: #ff0000
+  red: #ff0000,
 );
 
 @function color($color) {
@@ -42,12 +43,12 @@ $mobile: 400px;
 }
 
 html {
-  font-family: "Muli", sans-serif;
+  font-family: 'Muli', sans-serif;
   &::after {
     position: absolute;
     bottom: 0;
     left: 0;
-    content: "DEVELOPMENT BUILD";
+    content: 'DEVELOPMENT BUILD';
     color: rgba(255, 255, 255, 0.7);
   }
 }

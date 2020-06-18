@@ -219,6 +219,7 @@
   .btn-retake {
     padding: 0.5rem;
     border: color(secondary) 1px solid;
+    border-radius: 0.4em;
     outline: none;
     color: color(secondary);
     background: transparent;
@@ -252,7 +253,9 @@
   .btn-start {
     position: absolute;
     left: 50%;
-    top: 20%;
+    top: 45%;
+    font-size: 1.2em;
+    padding: 0.5em 0.75em;
     animation: fadeInTop 0.5s ease;
     @include mobile {
       top: 40%;
@@ -310,7 +313,6 @@
         flex-direction: column;
       }
       p.question {
-        background: color;
         width: 75%;
         height: 5em;
         line-height: 5em;
@@ -318,6 +320,9 @@
         border: 1px color(secondary) solid;
         cursor: pointer;
         transition: 0.3s;
+        &:hover {
+          border: 1px rgba(gray, 0.4) solid;
+        }
         @include mobile {
           height: 3.5em;
           line-height: 3.5em;
@@ -360,14 +365,18 @@
   .question-recap {
     .score-overview-title {
       font-size: 0.7em;
-      margin-top: 2em;
+      margin-top: 3.5em;
       margin-bottom: 0.5em;
     }
 
     .score-overview-score {
       font-size: 0.9em;
       word-spacing: 0.8em;
-      margin-bottom: 0.5em;
+      margin-bottom: 3em;
+    }
+    .score-overview-streak {
+      font-size: 0.9em;
+      margin: 1em auto;
     }
   }
 

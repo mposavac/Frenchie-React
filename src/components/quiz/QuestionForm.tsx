@@ -51,7 +51,7 @@ const QuestionForm: React.FC<IPropsQuestionForm> = ({
         />
       </div>
 
-      <button className="btn-get" disabled={questionsLoaded}>
+      <button className="btn-get" disabled={questionsLoaded || !options.numOfQuestions}>
         GET QUESTIONS
       </button>
     </form>

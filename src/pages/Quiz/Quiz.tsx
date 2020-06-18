@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { IOptions, IQuestion } from '../../types/Quiz';
 
-import { getQuestions } from '../../store/actions/quizActions';
+import { getQuestions, setScoreAcition } from '../../store/actions/quizActions';
 import QuestionForm from '../../components/quiz/QuestionForm';
 import QuestionBox from '../../components/quiz/QuestionBox';
 import Loading from '../../components/Loading';
@@ -39,6 +39,12 @@ const Quiz: React.FC<{}> = () => {
   useEffect(() => {
     dispatch(getQuestions(null));
   }, [dispatch]);
+
+  useEffect(() => {
+    if (isLogin && questionIndex === options.numOfQuestions && questionIndex > 0)
+      dispatch(setScoreAcition(score));
+    // eslint-disable-next-line
+  }, [questionIndex, options.numOfQuestions]);
 
   const prepareQuestions = (e: React.FormEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -95,7 +101,10 @@ const Quiz: React.FC<{}> = () => {
     setIsFetching(false);
     setIsStarted(false);
     setIsAnswered(true);
-    setTimeout(() => setScore(0), 750);
+    setTimeout(() => {
+      setScore(0);
+      setNumOfCorrect(0);
+    }, 750);
     setIndex(0);
   };
 
@@ -103,9 +112,11 @@ const Quiz: React.FC<{}> = () => {
     setAnimate(true);
     setTimeout(() => history.push('/'), 750);
   };
+
   const handleLoginMenu = () => {
     setShowLogin(false);
   };
+
   return (
     <div className="quiz">
       <Loading isLoading={isFetching} />

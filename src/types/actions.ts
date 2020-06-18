@@ -47,8 +47,17 @@ export interface WordsFetchResponseAction {
   type: typeof WORDS_FETCHED;
   words: Array<IQuestion> | Array<IWordData>;
 }
-
 export type WordsFetchActionTypes = WordsFetchResponseAction;
+
+/* ICONS FETCHED */
+export const ICONS_FETCHED = 'ICONS_FETCHED';
+
+export interface IconsFetchResponseAction {
+  type: typeof ICONS_FETCHED;
+  icons: Array<IQuestion> | Array<IWordData>;
+}
+
+export type IconsFetchActionTypes = IconsFetchResponseAction;
 
 /* QUIZ ACTIONS */
 export const QUESTION_RESPONSE = 'QUESTION_RESPONSE';

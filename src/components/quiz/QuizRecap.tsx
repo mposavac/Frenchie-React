@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTransition, animated } from 'react-spring';
-
+import { useSelector } from 'react-redux';
 import { IPropsQuizRecap } from '../../types/Quiz';
 
 const QuizRecap: React.FC<IPropsQuizRecap> = ({
@@ -29,6 +29,9 @@ const QuizRecap: React.FC<IPropsQuizRecap> = ({
       duration: 750,
     },
   });
+  const isLogin = useSelector<any, boolean>((state) => state.firebase.auth.uid || false);
+  const highScore = useSelector<any, number>((state) => state.firebase.profile.highScore || 0);
+  const streak = useSelector<any, number>((state) => state.firebase.profile.streak || 0);
 
   return (
     <React.Fragment>
@@ -37,11 +40,21 @@ const QuizRecap: React.FC<IPropsQuizRecap> = ({
           item && (
             <animated.div style={props} key={key}>
               <div className="question-recap">
-                <p className="score-overview-total">Your score is: {score}</p>
+                <p className="score-overview-total">
+                  {isLogin
+                    ? score >= highScore
+                      ? 'Your new high score is: '
+                      : 'Your score is: '
+                    : 'Your score is: '}
+                  {score}
+                </p>
                 <p className="score-overview-title">Correct anwsers / Number of Questions</p>
                 <p className="score-overview-score">
                   {numOfCorrect} / {numOfQuestions}
                 </p>
+                {isLogin && (
+                  <p className="score-overview-streak">You are on a {streak} day streak. Nice!</p>
+                )}
                 <button onClick={handleRetake} className="btn-retake">
                   Take quiz again
                 </button>
@@ -54,4 +67,3 @@ const QuizRecap: React.FC<IPropsQuizRecap> = ({
 };
 
 export default QuizRecap;
-/* DODATI KASNIJE IZLISTANJE NAJBOLJI REZULTATA TRENUTNOG KORISNIKA */

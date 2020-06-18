@@ -1,0 +1,68 @@
+[
+  {
+    "category": "Numbers",
+    "class": "numbers",
+    "values": [
+      { "translation": "0", "word": "Zéro" },
+      { "translation": "1", "word": "Un" },
+      { "translation": "2", "word": "Deux" },
+      { "translation": "3", "word": "Trois" },
+      { "translation": "4", "word": "Quatre" },
+      { "translation": "5", "word": "Cinq" },
+      { "translation": "6", "word": "Six" },
+      { "translation": "7", "word": "Sept" },
+      { "translation": "8", "word": "Huit" },
+      { "translation": "9", "word": "Neuf" },
+      { "translation": "10", "word": "Dix" },
+      { "translation": "11", "word": "Onze" },
+      { "translation": "12", "word": "Douze" },
+      { "translation": "13", "word": "Treize" },
+      { "translation": "14", "word": "Quatorze" },
+      { "translation": "15", "word": "Quinze" },
+      { "translation": "16", "word": "Seize" },
+      { "translation": "17", "word": "Dix-sept" },
+      { "translation": "18", "word": "Dix-huit" },
+      { "translation": "19", "word": "Dix-neuf" },
+      { "translation": "20", "word": "Vingt" },
+      { "translation": "30", "word": "Trente" },
+      { "translation": "40", "word": "Quarante" },
+      { "translation": "50", "word": "Cinquante" },
+      { "translation": "60", "word": "Soixante" },
+      { "translation": "70", "word": "Soixante-dix" },
+      { "translation": "80", "word": "Quatre-vingts" },
+      { "translation": "90", "word": "Quatre-vingt-dix" },
+      { "translation": "100", "word": "Cent" }
+    ]
+  },
+  {
+    "category": "Days",
+    "class": "days",
+    "values": [
+      { "word": "Lundi", "translation": "Monday" },
+      { "word": "Mardi", "translation": "Tuesday" },
+      { "word": "Mercredi", "translation": "Wednesday" },
+      { "word": "Jeudi", "translation": "Thursday" },
+      { "word": "Vendredi", "translation": "Friday" },
+      { "word": "Samedi", "translation": "Saturday" },
+      { "word": "Dimanche", "translation": "Sunday" }
+    ]
+  },
+  {
+    "category": "Months",
+    "class": "months",
+    "values": [
+      { "word": "Janvier", "translation": "January" },
+      { "word": "Février", "translation": "February" },
+      { "word": "Mars", "translation": "March" },
+      { "word": "Avril", "translation": "April" },
+      { "word": "Mai", "translation": "May" },
+      { "word": "Juin", "translation": "June" },
+      { "word": "Juillet", "translation": "July" },
+      { "word": "Aout", "translation": "August" },
+      { "word": "Septembre", "translation": "September" },
+      { "word": "Octobre", "translation": "October" },
+      { "word": "Novembre", "translation": "November" },
+      { "word": "Décembre", "translation": "December" }
+    ]
+  }
+]

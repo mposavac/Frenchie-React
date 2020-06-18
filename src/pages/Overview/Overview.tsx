@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import WordList from '../../components/overview/WordList';
 import { fetchWords } from '../../store/actions/overviewActions';
 import { IQuestion } from '../../types/Quiz';
-import Grammar from '../../components/overview/Grammar';
+import Basics from '../../components/overview/Basics';
 import LoginScreen from '../../components/home/LoginScreen';
 import { RootReducer } from '../../store/reducers/rootReducer';
 
@@ -17,7 +17,7 @@ const Overview: React.FC<{}> = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const categories: Array<string> = ['Adjectives', 'Nouns', 'Verbs', 'Your words', 'Grammar'];
+  const categories: Array<string> = ['Adjectives', 'Nouns', 'Verbs', 'Your words', 'Basics'];
 
   const handleCategory = (e: React.MouseEvent) => {
     const name: string = e.currentTarget.id;
@@ -35,7 +35,7 @@ const Overview: React.FC<{}> = () => {
         }, 500);
       } else {
         setAnimate(name);
-        //TODO: FETCH GRAMMAR
+        dispatch(fetchWords(name));
         setTimeout(() => {
           setActive(name);
         }, 500);
@@ -77,7 +77,7 @@ const Overview: React.FC<{}> = () => {
         ))}
       </div>
       {active && active !== categories[4] && <WordList words={words} />}
-      {active && active === categories[4] && <Grammar words={words} />}
+      {active && active === categories[4] && <Basics words={words} />}
       <LoginScreen
         show={active === 'Login Menu'}
         isLogin={isLogin}

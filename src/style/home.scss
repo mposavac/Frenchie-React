@@ -129,9 +129,10 @@
         clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
         color: color(scondary);
         opacity: 0;
-        font-size: 1.25rem;
+        font-size: 1.4rem;
         transition: 0.3s;
         animation: fadingIn 0.4s ease-out forwards;
+        font-family: 'Lobster', cursive;
         cursor: pointer;
         i {
           display: block;

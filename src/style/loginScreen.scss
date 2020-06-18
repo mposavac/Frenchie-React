@@ -34,7 +34,7 @@
     }
     h2 {
       text-align: center;
-      color: color(thirdColor);
+      color: color(secondary);
     }
     .input-field {
       position: relative;
@@ -102,6 +102,9 @@
     transition: 0.3s;
     &:active {
       transform: scale(1.1);
+    }
+    &:hover {
+      background: color(secondary);
     }
   }
   .change-btn {

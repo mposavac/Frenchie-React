@@ -4,7 +4,7 @@ import adjectives from '../../assets/adjectives.json';
 import nouns from '../../assets/nouns.json';
 import verbs from '../../assets/verbs.json';
 import { IQuestion, IOptions } from '../../types/Quiz.js';
-import { getUserWords } from '../../server functions/serverFunctions';
+import { getUserWords, setScoreAndStreak } from '../../server functions/serverFunctions';
 import { IWordData } from '../../types/AddForm';
 
 export const getQuestions = (options: IOptions | null) => {
@@ -81,5 +81,12 @@ export const getQuestions = (options: IOptions | null) => {
       console.log(quizWords);
       dispatch({ type: 'QUESTION_RESPONSE', questions: quizWords });
     } else dispatch({ type: 'QUESTION_RESPONSE', questions: [] });
+  };
+};
+
+export const setScoreAcition = (score: number) => {
+  return (dispatch: Dispatch, getState: Function, { getFirebase, getFirestore }: any) => {
+    let response: any = setScoreAndStreak(getState, getFirestore, score);
+    response.then(() => dispatch({ type: 'STREAK' }));
   };
 };

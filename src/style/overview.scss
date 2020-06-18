@@ -2,8 +2,7 @@
   position: relative;
   width: 100%;
   height: 100vh;
-  background: url("../assets/architecture-buildings-city-373893.jpg")
-    center/cover no-repeat;
+  background: url('../assets/architecture-buildings-city-373893.jpg') center/cover no-repeat;
   overflow: hidden;
   .overview-square-backgorund {
     position: absolute;
@@ -75,7 +74,7 @@
         width: 75%;
       }
       &::before {
-        content: "";
+        content: '';
         position: absolute;
         width: 100%;
         left: -100%;
@@ -103,7 +102,7 @@
       .btn.active {
         overflow: hidden;
         &::after {
-          content: "";
+          content: '';
           position: absolute;
           width: 100%;
           left: 100%;
@@ -136,29 +135,117 @@
     z-index: 150;
     div {
       opacity: 0;
-      animation: 0.2s fadeInTop forwards ease;
+      animation: 0.75s fadeInTop forwards ease;
       display: flex;
       justify-content: center;
       align-items: center;
-      &:nth-child(1) {
+      &.list:nth-child(1) {
         border-bottom: 1px color(thirdColor) solid;
         p {
           font-weight: bold;
         }
       }
-      p {
-        width: 50%;
-        text-align: center;
-        padding-bottom: 0.5em;
-        &:nth-child(1) {
-          border-right: 1px color(thirdColor) solid;
+      &.list {
+        p {
+          width: 50%;
+          text-align: center;
+          padding: 0.4em 0;
+          &:nth-child(1) {
+            border-right: 1px color(thirdColor) solid;
+          }
+          &:nth-child(2) {
+            color: color(red);
+          }
         }
-        &:nth-child(2) {
-          color: color(red);
+        &:nth-child(2n) {
+          background: rgba(gray, 0.25);
+        }
+      }
+      &.basic-list {
+        display: block;
+        &.numbers {
+          display: grid;
+          grid-template-columns: repeat(10, 1fr);
+          grid-template-rows: repeat(3, 1fr);
+          gap: 1px 1px;
         }
       }
     }
-    @for $i from 1 to 25 {
+    &.basic-list-wrapper {
+      h2 {
+        text-decoration: underline;
+        padding: 0 0 0.25em 0;
+      }
+      .word-list-wrapper {
+        display: block;
+        margin-bottom: 2em;
+        .basic-list {
+          display: block;
+          &.numbers {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 1px 1px;
+            .list-element {
+              display: flex;
+              flex-direction: column-reverse;
+              justify-content: center;
+              align-items: center;
+              text-align: center;
+              .translation {
+                font-size: 1.1em;
+                font-weight: 700;
+              }
+            }
+          }
+          &.days {
+            margin: 0.25em auto;
+            .list-element {
+              opacity: 0;
+              animation: 0.25s fadeInTop forwards ease;
+              display: flex;
+              flex-direction: row-reverse;
+              width: 250px;
+              margin: 0.75em auto;
+              font-size: 1.1em;
+              .word {
+                flex: 50%;
+                text-align: right;
+              }
+              .translation {
+                flex: 50%;
+                font-weight: 700;
+              }
+            }
+          }
+          &.months {
+            display: grid;
+            grid-template-rows: repeat(6, auto);
+            grid-auto-flow: column;
+            row-gap: 2em;
+            column-gap: 4em;
+            .list-element {
+              opacity: 0;
+              animation: 0.25s fadeInTop forwards ease;
+              .months-p-wrapper {
+                display: flex;
+                flex-direction: column;
+                margin-right: 2em;
+                .word {
+                  font-size: 1.1em;
+                  font-weight: 700;
+                }
+              }
+              img {
+                height: 64px;
+                width: 64px;
+              }
+            }
+          }
+        }
+      }
+    }
+    @for $i from 1 to 30 {
       div:nth-child(#{$i}) {
         animation-delay: #{$i * 0.05}s;
       }

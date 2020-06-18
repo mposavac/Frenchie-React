@@ -21,7 +21,6 @@ const HomeController: React.FC<{}> = () => {
   const history = useHistory();
 
   useEffect(() => {
-    console.log(window.innerWidth);
     if (window.innerWidth < 400) setIsMobile(true);
   }, []);
 
