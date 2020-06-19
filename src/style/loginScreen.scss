@@ -100,6 +100,9 @@
     border-radius: 50px;
     margin-top: 1em;
     transition: 0.3s;
+    @include mobile {
+      margin-top: 2em;
+    }
     &:active {
       transform: scale(1.1);
     }

@@ -10,8 +10,14 @@
     height: 100%;
     width: 100%;
     z-index: 0;
+    @include mobile {
+      animation: sizeinMobile 2.5s forwards ease;
+    }
     &.redirect-anim {
       animation: sizeOutOverview 0.75s forwards ease;
+      @include mobile {
+        animation: sizeOutMobile 0.75s forwards ease;
+      }
       & ~ div,
       & ~ .fa-home {
         opacity: 0 !important;
@@ -57,9 +63,17 @@
       top: 50%;
       transform: translateY(-50%);
       overflow: hidden;
+      @include mobile {
+        width: 10em;
+      }
       @for $i from 0 to 5 {
         &:nth-child(#{$i + 1}) {
           left: #{$i * 20 + 2.5%};
+          @include mobile {
+            left: 50%;
+            top: #{$i * 15 + 10%};
+            transform: translateX(-50%);
+          }
         }
       }
       &.animate {
@@ -94,6 +108,9 @@
     }
 
     &.active {
+      @include mobile {
+        width: 95%;
+      }
       .btn:not(.active) {
         opacity: 0;
         width: 0;
@@ -133,6 +150,10 @@
     width: 70%;
     margin: auto;
     z-index: 150;
+    @include mobile {
+      width: 90%;
+      left: 5%;
+    }
     div {
       opacity: 0;
       animation: 0.75s fadeInTop forwards ease;
@@ -154,20 +175,12 @@
             border-right: 1px color(thirdColor) solid;
           }
           &:nth-child(2) {
-            color: color(red);
+            color: color(secondary);
+            font-weight: bolder;
           }
         }
         &:nth-child(2n) {
           background: rgba(gray, 0.25);
-        }
-      }
-      &.basic-list {
-        display: block;
-        &.numbers {
-          display: grid;
-          grid-template-columns: repeat(10, 1fr);
-          grid-template-rows: repeat(3, 1fr);
-          gap: 1px 1px;
         }
       }
     }
@@ -186,6 +199,10 @@
             grid-template-columns: repeat(10, 1fr);
             grid-template-rows: repeat(3, 1fr);
             gap: 1px 1px;
+            @include tablet {
+              grid-template-columns: repeat(5, 1fr);
+              gap: 16px 10px;
+            }
             .list-element {
               display: flex;
               flex-direction: column-reverse;
@@ -239,6 +256,10 @@
               img {
                 height: 64px;
                 width: 64px;
+                @include mobile {
+                  width: 10vw;
+                  height: 10vw;
+                }
               }
             }
           }

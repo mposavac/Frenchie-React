@@ -46,15 +46,16 @@
 
     @include mobile {
       display: flex;
-      position: fixed;
       flex-direction: column;
       top: 0;
       left: 0;
       transform: unset;
+      width: 100%;
+      //background: red;
+      height: 100vh;
     }
     .container {
-      //position: relative;
-      //overflow: hidden;
+      position: relative;
       width: 16vw;
       height: 16vw;
       min-width: 200px;
@@ -71,6 +72,10 @@
         min-width: 150px;
         min-height: 150px;
       }
+      @include mobile {
+        max-width: 150px;
+        max-height: 150px;
+      }
 
       &:nth-child(4),
       &:nth-child(6),
@@ -79,9 +84,6 @@
       &:nth-child(16),
       &:nth-child(19) {
         animation-name: opacityAnimation1, unfold;
-        /*@include mobile {
-          display: none;
-        }*/
       }
 
       &:nth-child(1),
@@ -92,9 +94,6 @@
       &:nth-child(18),
       &:nth-child(20) {
         animation-name: opacityAnimation2, unfold;
-        /*@include mobile {
-          display: none;
-        }*/
       }
 
       &:nth-child(3),
@@ -105,9 +104,6 @@
       &:nth-child(22) {
         animation-name: opacityAnimation3, unfold;
         background: none;
-        /*@include mobile {
-          display: none;
-        }*/
       }
 
       &:nth-child(5),
@@ -137,18 +133,6 @@
         i {
           display: block;
         }
-        /*@include mobile {
-          display: block;
-          position: relative;
-          top: 50%;
-          width: 100%;
-          height: unset;
-          font-size: 1rem;
-          line-height: 1.3rem;
-          padding: 5px;
-          clip-path: none;
-          animation: fadingInMobile 0.4s ease-out forwards;
-        }*/
       }
       .menu.first-menu {
         animation-delay: 2.3s;
@@ -164,6 +148,26 @@
       }
     }
     .container.menu-container {
+      @include mobile {
+        animation: fadingInMobile 0.4s ease-out forwards;
+        background: color(white);
+        &:nth-child(1) {
+          left: 4%;
+          top: 15%;
+        }
+        &:nth-child(2) {
+          left: 40%;
+          top: 12%;
+        }
+        &:nth-child(3) {
+          left: 4%;
+          top: 10%;
+        }
+        &:nth-child(4) {
+          left: 40%;
+          top: 7%;
+        }
+      }
       &::after {
         content: '';
         top: 0;
@@ -194,6 +198,17 @@
       right: -26vw;
       height: 75vw;
       width: 75vw;
+    }
+    @include mobile {
+      .container.menu-container.transition:nth-child(1)::after,
+      .container.menu-container.transition:nth-child(2)::after,
+      .container.menu-container.transition:nth-child(3)::after,
+      .container.menu-container.transition:nth-child(4)::after {
+        top: -250vw;
+        right: -250vw;
+        height: 500vw;
+        width: 500vw;
+      }
     }
     .container.menu-container.backside::after {
       transform: rotate3d(1, 1, 0, 180deg);

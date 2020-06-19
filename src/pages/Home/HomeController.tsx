@@ -21,7 +21,7 @@ const HomeController: React.FC<{}> = () => {
   const history = useHistory();
 
   useEffect(() => {
-    if (window.innerWidth < 400) setIsMobile(true);
+    if (window.innerWidth < 700) setIsMobile(true);
   }, []);
 
   const handleAnimation = (e: React.FormEvent<HTMLFormElement>) => {
@@ -34,7 +34,6 @@ const HomeController: React.FC<{}> = () => {
     if (e.currentTarget.id === '4' && isLogin) {
       setAnimateIndex(undefined);
       dispatch(signOut());
-      //ANIMACIJA LOADING
     } else if (e.currentTarget.id === '4')
       setTimeout(() => {
         handleLoginMenu();

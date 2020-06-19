@@ -21,7 +21,6 @@ const Home: React.FC<IPropsHome> = ({
       {!isLoading && (
         <div className={animateIndex ? 'card-holder animate' : 'card-holder'}>
           {!isMobile && returnContainers(4)}
-
           <div className={'container menu-container ' + (animateIndex === 1 ? 'transition' : '')}>
             <div className="menu first-menu" id="1" onClick={handleAnimation}>
               <i className="fas fa-question" />
