@@ -97,3 +97,11 @@ export const getIcons = async (getFirebase: Function) => {
   });
   return urls;
 };
+
+export const getWords = async (category: string) => {
+  let words: any = [];
+  await fetch(process.env.REACT_APP_URL + category)
+    .then((res) => res.json())
+    .then((res) => (words = res));
+  return words;
+};

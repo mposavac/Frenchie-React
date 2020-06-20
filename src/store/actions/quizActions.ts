@@ -1,10 +1,7 @@
 import { Dispatch } from 'redux';
 
-import adjectives from '../../assets/adjectives.json';
-import nouns from '../../assets/nouns.json';
-import verbs from '../../assets/verbs.json';
 import { IQuestion, IOptions } from '../../types/Quiz.js';
-import { getUserWords, setScoreAndStreak } from '../../server functions/serverFunctions';
+import { getUserWords, setScoreAndStreak, getWords } from '../../server functions/serverFunctions';
 import { IWordData } from '../../types/AddForm';
 
 export const getQuestions = (options: IOptions | null) => {
@@ -21,11 +18,19 @@ export const getQuestions = (options: IOptions | null) => {
         }
       };
 
-      if (options.adjectives.checked) parsedWords.push(adjectives);
+      if (options.adjectives.checked) {
+        let adjectives = await getWords('adjectives');
+        parsedWords.push(adjectives);
+      }
+      if (options.nouns.checked) {
+        let nouns = await getWords('nouns');
+        parsedWords.push(nouns);
+      }
 
-      if (options.nouns.checked) parsedWords.push(nouns);
-
-      if (options.verbs.checked) parsedWords.push(verbs);
+      if (options.verbs.checked) {
+        let verbs = await getWords('verbs');
+        parsedWords.push(verbs);
+      }
 
       if (options.custom_words.checked) {
         let custom_words: Array<IWordData> = await getUserWords(getState, getFirestore);

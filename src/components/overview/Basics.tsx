@@ -11,7 +11,6 @@ const Basics: React.FC<any> = ({ words }) => {
     // eslint-disable-next-line
   }, []);
 
-  console.log(images);
   return (
     <div className="word-list basic-list-wrapper">
       {words.map((section: any) => (

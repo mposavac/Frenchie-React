@@ -1,24 +1,32 @@
 import { Dispatch } from 'redux';
 
-import adjectives from '../../assets/adjectives.json';
-import nouns from '../../assets/nouns.json';
-import verbs from '../../assets/verbs.json';
-import basics from '../../assets/basics.json';
+import _ from 'lodash';
 
 import { WORDS_FETCHED, ICONS_FETCHED } from '../../types/actions';
-import { getUserWords, getIcons } from '../../server functions/serverFunctions';
+import { getUserWords, getIcons, getWords } from '../../server functions/serverFunctions';
 import { IWordData } from '../../types/AddForm';
 
 export const fetchWords = (fileName: string) => {
   return async (dispatch: Dispatch, getState: Function, { getFirestore }: any) => {
-    if (fileName === 'Adjectives') dispatch({ type: WORDS_FETCHED, words: adjectives });
-    else if (fileName === 'Nouns') dispatch({ type: WORDS_FETCHED, words: nouns });
-    else if (fileName === 'Verbs') dispatch({ type: WORDS_FETCHED, words: verbs });
-    else if (fileName === 'Your words') {
+    if (fileName === 'Adjectives') {
+      let adjectives = await getWords('adjectives');
+      dispatch({ type: WORDS_FETCHED, words: adjectives });
+    } else if (fileName === 'Nouns') {
+      let nouns = await getWords('nouns');
+      dispatch({ type: WORDS_FETCHED, words: nouns });
+    } else if (fileName === 'Verbs') {
+      let verbs = await getWords('verbs');
+      dispatch({ type: WORDS_FETCHED, words: verbs });
+    } else if (fileName === 'Your words') {
       let words: Array<IWordData> = await getUserWords(getState, getFirestore);
       dispatch({ type: WORDS_FETCHED, words: words });
     } else if (fileName === 'Basics') {
-      dispatch({ type: WORDS_FETCHED, words: basics });
+      let basics = await getWords('basics');
+      let groupedBasics = _.chain(basics)
+        .groupBy('category')
+        .map((value, key) => ({ category: key, class: key.toLowerCase(), values: value }))
+        .value();
+      dispatch({ type: WORDS_FETCHED, words: groupedBasics });
     } else {
       dispatch({ type: WORDS_FETCHED, words: [] });
     }
