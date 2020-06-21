@@ -12,6 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.BasicsController = void 0;
 const common_1 = require("@nestjs/common");
 const basics_service_1 = require("./basics.service");
+const swagger_1 = require("@nestjs/swagger");
+const wordsResponse_dto_1 = require("../../utils/wordsResponse.dto");
 let BasicsController = (() => {
     let BasicsController = class BasicsController {
         constructor(basicsService) {
@@ -22,12 +24,18 @@ let BasicsController = (() => {
         }
     };
     __decorate([
+        swagger_1.ApiOkResponse({
+            description: 'OK.',
+            isArray: true,
+            type: wordsResponse_dto_1.WordsResponseDto,
+        }),
         common_1.Get(),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", void 0)
     ], BasicsController.prototype, "findAll", null);
     BasicsController = __decorate([
+        swagger_1.ApiTags('Basics'),
         common_1.Controller('basics'),
         __metadata("design:paramtypes", [basics_service_1.BasicsService])
     ], BasicsController);

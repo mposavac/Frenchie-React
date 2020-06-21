@@ -2877,8 +2877,8 @@
         "affectsGlobalScope": false
       },
       "../src/modules/adjectives/adjectives.controller.ts": {
-        "version": "d056da8fa0c0b923f4919a7417c2ec6525cc83db9152ff253eed8d57dafeb396",
-        "signature": "fac8499313b3959923f7ebf4ce3ef53c068154e59530225d19cd1b6f69420e31",
+        "version": "6b2bc16eb851230eae42a706379f32b5e4171ce3e5f999e468bb16757af18190",
+        "signature": "90d0491e38d782475c43466116c9a8619673eadab7108b89d3d1d08525ca4a3c",
         "affectsGlobalScope": false
       },
       "../src/modules/adjectives/adjectives.module.ts": {
@@ -2897,8 +2897,8 @@
         "affectsGlobalScope": false
       },
       "../src/modules/nouns/nouns.controller.ts": {
-        "version": "bd4aacd53e16780faec7a26205f36e492d3d54992e79b9d1478df9f7fc6f5c6b",
-        "signature": "06840c8f07448677ee48eb88a46562e646f60570e84479422cc6b3eb9682939d",
+        "version": "3b7cf85d4c353544824a033e2fae0943d4939038c464f1b86aa7a39db19c9246",
+        "signature": "987c5a173d8a86bba08b2a2c354a9038b6e6d0f52ae17aaeb79c5416ac81b590",
         "affectsGlobalScope": false
       },
       "../src/modules/nouns/nouns.module.ts": {
@@ -2917,8 +2917,8 @@
         "affectsGlobalScope": false
       },
       "../src/modules/verbs/verbs.controller.ts": {
-        "version": "424c04ed06e0f1706924e2b6a9167188c7e5ed22ad61a26ddd430c1d6ec989f0",
-        "signature": "96ed18f2b1170137db6f832b05c4f3c0f5984ab589c7f10c7471415a9b734213",
+        "version": "c0c58c8ae667d1ebed7874cefd554e74c14944f40ca3fcf239f8dfdea5ac503d",
+        "signature": "166a05b7a9e98833bf1e2775c2116c2a1725c8ed3677845c5203841dd6311143",
         "affectsGlobalScope": false
       },
       "../src/modules/verbs/verbs.module.ts": {
@@ -2937,8 +2937,8 @@
         "affectsGlobalScope": false
       },
       "../src/modules/basics/basics.controller.ts": {
-        "version": "45e6081ab0d69f3af0b027a6af7ce8ff8297417aa169b9b680bdc70dd0ee46fd",
-        "signature": "fa85d42c55a05918b1aae0ec779314057512eedc600bcc2e444c57bcf852ee13",
+        "version": "37c3df04bf1945a8bbeb99dc44ec674d97f3ea2a652a94ee1f1b5725380d4b32",
+        "signature": "7add233245c6a63a68b20b99c42fe4ec51ab79aca1d0e3978abcc4d0f67dccdc",
         "affectsGlobalScope": false
       },
       "../src/modules/basics/basics.module.ts": {
@@ -2952,7 +2952,7 @@
         "affectsGlobalScope": false
       },
       "../src/main.ts": {
-        "version": "a6f322ea7dadeb99a71682b3d191a3522d5d27280379d5c9b24fe03e7e52861d",
+        "version": "8b6efb4e51c143230a785327be82752afdb1dfd3942f915b2378e170adf62c19",
         "signature": "f761c91419d0a89422a0004ef1a92929dd4d2d5e5c16758654d8b0467d1998c6",
         "affectsGlobalScope": false
       },
@@ -9662,6 +9662,7 @@
       ],
       "../src/main.ts": [
         "../node_modules/@nestjs/core/index.d.ts",
+        "../node_modules/@nestjs/swagger/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
@@ -9671,12 +9672,14 @@
       ],
       "../src/modules/adjectives/adjectives.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/swagger/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
-        "../src/modules/adjectives/adjectives.service.ts"
+        "../src/modules/adjectives/adjectives.service.ts",
+        "../src/utils/wordsresponse.dto.ts"
       ],
       "../src/modules/adjectives/adjectives.entity.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -9727,12 +9730,14 @@
       ],
       "../src/modules/basics/basics.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/swagger/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
-        "../src/modules/basics/basics.service.ts"
+        "../src/modules/basics/basics.service.ts",
+        "../src/utils/wordsresponse.dto.ts"
       ],
       "../src/modules/basics/basics.entity.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -9769,12 +9774,14 @@
       ],
       "../src/modules/nouns/nouns.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/swagger/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
-        "../src/modules/nouns/nouns.service.ts"
+        "../src/modules/nouns/nouns.service.ts",
+        "../src/utils/wordsresponse.dto.ts"
       ],
       "../src/modules/nouns/nouns.entity.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",
@@ -9811,12 +9818,14 @@
       ],
       "../src/modules/verbs/verbs.controller.ts": [
         "../node_modules/@nestjs/common/index.d.ts",
+        "../node_modules/@nestjs/swagger/index.d.ts",
         "../node_modules/@types/graceful-fs/index.d.ts",
         "../node_modules/@types/node/fs.d.ts",
         "../node_modules/@types/node/ts3.2/fs.d.ts",
         "../node_modules/@types/node/ts3.2/util.d.ts",
         "../node_modules/@types/node/util.d.ts",
-        "../src/modules/verbs/verbs.service.ts"
+        "../src/modules/verbs/verbs.service.ts",
+        "../src/utils/wordsresponse.dto.ts"
       ],
       "../src/modules/verbs/verbs.entity.ts": [
         "../node_modules/@types/graceful-fs/index.d.ts",

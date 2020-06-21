@@ -12,6 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AdjectivesController = void 0;
 const common_1 = require("@nestjs/common");
 const adjectives_service_1 = require("./adjectives.service");
+const swagger_1 = require("@nestjs/swagger");
+const wordsResponse_dto_1 = require("../../utils/wordsResponse.dto");
 let AdjectivesController = (() => {
     let AdjectivesController = class AdjectivesController {
         constructor(adjectivesService) {
@@ -22,12 +24,18 @@ let AdjectivesController = (() => {
         }
     };
     __decorate([
+        swagger_1.ApiOkResponse({
+            description: 'OK.',
+            isArray: true,
+            type: wordsResponse_dto_1.WordsResponseDto,
+        }),
         common_1.Get(),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", void 0)
     ], AdjectivesController.prototype, "findAll", null);
     AdjectivesController = __decorate([
+        swagger_1.ApiTags('Adjectives'),
         common_1.Controller('adjectives'),
         __metadata("design:paramtypes", [adjectives_service_1.AdjectivesService])
     ], AdjectivesController);

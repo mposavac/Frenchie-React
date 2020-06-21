@@ -1,8 +1,5 @@
-# French learning app
+# French learning website
 
-### To do:
+### Frontend is available [HERE](https://frenchie-6b026.firebaseapp.com "Frenchie")
 
-- Responsivnes
-- Grammar learning
-- Quiz Streak and Leaderboard
-- More words
+### Backend is hosted by heroku and it is available [HERE](https://frenchie-nestjs.herokuapp.com/api "Server")

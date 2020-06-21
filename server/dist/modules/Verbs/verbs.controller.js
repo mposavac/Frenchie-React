@@ -12,6 +12,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.VerbsController = void 0;
 const common_1 = require("@nestjs/common");
 const verbs_service_1 = require("./verbs.service");
+const swagger_1 = require("@nestjs/swagger");
+const wordsResponse_dto_1 = require("../../utils/wordsResponse.dto");
 let VerbsController = (() => {
     let VerbsController = class VerbsController {
         constructor(verbsService) {
@@ -22,12 +24,18 @@ let VerbsController = (() => {
         }
     };
     __decorate([
+        swagger_1.ApiOkResponse({
+            description: 'OK.',
+            isArray: true,
+            type: wordsResponse_dto_1.WordsResponseDto,
+        }),
         common_1.Get(),
         __metadata("design:type", Function),
         __metadata("design:paramtypes", []),
         __metadata("design:returntype", void 0)
     ], VerbsController.prototype, "findAll", null);
     VerbsController = __decorate([
+        swagger_1.ApiTags('Verbs'),
         common_1.Controller('verbs'),
         __metadata("design:paramtypes", [verbs_service_1.VerbsService])
     ], VerbsController);
