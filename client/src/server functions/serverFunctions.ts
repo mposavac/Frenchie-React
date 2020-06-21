@@ -24,7 +24,6 @@ export const getUserWords = async (getState: Function, getFirestore: Function) =
   snapshots.forEach((doc: any) => {
     words.push(doc.data());
   });
-  console.log(words);
   return words;
 };
 
@@ -59,7 +58,7 @@ export const setScoreAndStreak = (getState: Function, getFirestore: Function, sc
   const firestore = getFirestore();
   const userId: string = getState().firebase.auth.uid;
   const currentTime = Date.now();
-  const highScore = Math.max(getState().firebase.profile.highScore, score);
+  const highScore: number = Math.max(getState().firebase.profile.highScore, score);
   const diffTime = Math.abs(currentTime - getState().firebase.profile.lastStreakEntered);
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
   return firestore
@@ -99,7 +98,7 @@ export const getIcons = async (getFirebase: Function) => {
 };
 
 export const getWords = async (category: string) => {
-  let words: any = [];
+  let words: Array<IWordData> = [];
   await fetch(process.env.REACT_APP_URL + category)
     .then((res) => res.json())
     .then((res) => (words = res));

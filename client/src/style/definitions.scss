@@ -44,11 +44,4 @@ $mobile: 700px;
 
 html {
   font-family: 'Muli', sans-serif;
-  &::after {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    content: 'DEVELOPMENT BUILD';
-    color: rgba(255, 255, 255, 0.7);
-  }
 }

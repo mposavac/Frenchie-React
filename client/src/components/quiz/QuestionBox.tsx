@@ -64,7 +64,6 @@ const QuestionBox: React.FC<IPropsQuestionBox> = ({
     return '';
   };
 
-  console.log(question);
   return (
     <div className="question-box">
       <h2>How would you say "{question.translation}" on french?</h2>

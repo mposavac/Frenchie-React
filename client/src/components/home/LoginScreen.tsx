@@ -80,7 +80,6 @@ const LoginScreen: React.FC<IPropsLoginScreen> = ({
     if (pswd === pswdRepeat) {
       dispatch(signUp({ username, email, password: pswd }));
       setLoggingIn(true);
-      //handleLoginMenu();
     } else setErrMsg('Please repeat password correctly.');
   };
 

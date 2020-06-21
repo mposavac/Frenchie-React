@@ -13,28 +13,27 @@ export const getQuestions = (options: IOptions | null) => {
 
       const generateRandom = (length: number, maxNumber: number, array: Array<number>) => {
         while (array.length < length) {
-          let number = Math.floor(Math.random() * maxNumber);
+          let number: number = Math.floor(Math.random() * maxNumber);
           if (!array.includes(number)) array.push(number);
         }
       };
 
       if (options.adjectives.checked) {
-        let adjectives = await getWords('adjectives');
+        let adjectives: Array<IWordData> = await getWords('adjectives');
         parsedWords.push(adjectives);
       }
       if (options.nouns.checked) {
-        let nouns = await getWords('nouns');
+        let nouns: Array<IWordData> = await getWords('nouns');
         parsedWords.push(nouns);
       }
 
       if (options.verbs.checked) {
-        let verbs = await getWords('verbs');
+        let verbs: Array<IWordData> = await getWords('verbs');
         parsedWords.push(verbs);
       }
 
       if (options.custom_words.checked) {
         let custom_words: Array<IWordData> = await getUserWords(getState, getFirestore);
-        console.log(custom_words);
 
         custom_words.forEach((object: IWordData) => {
           object.word = object.word[0];
@@ -83,7 +82,6 @@ export const getQuestions = (options: IOptions | null) => {
 
         obj['incorrect_answers'] = incorrect_answers;
       }
-      console.log(quizWords);
       dispatch({ type: 'QUESTION_RESPONSE', questions: quizWords });
     } else dispatch({ type: 'QUESTION_RESPONSE', questions: [] });
   };

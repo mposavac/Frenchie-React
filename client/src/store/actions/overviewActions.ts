@@ -9,19 +9,19 @@ import { IWordData } from '../../types/AddForm';
 export const fetchWords = (fileName: string) => {
   return async (dispatch: Dispatch, getState: Function, { getFirestore }: any) => {
     if (fileName === 'Adjectives') {
-      let adjectives = await getWords('adjectives');
+      let adjectives: Array<IWordData> = await getWords('adjectives');
       dispatch({ type: WORDS_FETCHED, words: adjectives });
     } else if (fileName === 'Nouns') {
-      let nouns = await getWords('nouns');
+      let nouns: Array<IWordData> = await getWords('nouns');
       dispatch({ type: WORDS_FETCHED, words: nouns });
     } else if (fileName === 'Verbs') {
-      let verbs = await getWords('verbs');
+      let verbs: Array<IWordData> = await getWords('verbs');
       dispatch({ type: WORDS_FETCHED, words: verbs });
     } else if (fileName === 'Your words') {
       let words: Array<IWordData> = await getUserWords(getState, getFirestore);
       dispatch({ type: WORDS_FETCHED, words: words });
     } else if (fileName === 'Basics') {
-      let basics = await getWords('basics');
+      let basics: Array<IWordData> = await getWords('basics');
       let groupedBasics = _.chain(basics)
         .groupBy('category')
         .map((value, key) => ({ category: key, class: key.toLowerCase(), values: value }))
@@ -36,7 +36,7 @@ export const fetchWords = (fileName: string) => {
 export const fetchIcons = () => {
   return async (dispatch: Dispatch, getState: Function, { getFirebase }: any) => {
     let imagesUrl: Array<string> = await getIcons(getFirebase);
-    let months = [
+    let months: Array<string> = [
       'january',
       'february',
       'march',
