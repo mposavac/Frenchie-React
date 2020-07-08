@@ -27,21 +27,26 @@ export const getUserWords = async (getState: Function, getFirestore: Function) =
   return words;
 };
 
-export const createUser = (getFirebase: Function, getFirestore: Function, userData: IUserData) => {
+export const createUser = async (
+  getFirebase: Function,
+  getFirestore: Function,
+  userData: IUserData,
+) => {
   const firebase = getFirebase();
   const firestore = getFirestore();
-  return firebase
+  const userId = await firebase
     .auth()
     .createUserWithEmailAndPassword(userData.email, userData.password)
     .then((res: ICreateUserResponse) => {
-      return firestore.collection('users').doc(res.user.uid).set({
-        userName: userData.username,
-        highScore: 0,
-        lastPlayed: 0,
-        lastStreakEntered: 0,
-        streak: 0,
-      });
+      return res.user.uid;
     });
+  return firestore.collection('users').doc(userId).set({
+    userName: userData.username,
+    highScore: 0,
+    lastPlayed: 0,
+    lastStreakEntered: 0,
+    streak: 0,
+  });
 };
 
 export const loginUser = (getFirebase: Function, userData: IUserData) => {
@@ -68,7 +73,10 @@ export const setScoreAndStreak = (getState: Function, getFirestore: Function, sc
     .then(() => {
       if (diffDays === 0) {
         return {};
-      } else if (diffDays === 1) {
+      } else if (
+        diffDays === 1 ||
+        (getState().firebase.profile.streak === 0 && getState().firebase.profile.lastPlayed === 0)
+      ) {
         let streak = getState().firebase.profile.streak + 1;
         return firestore
           .collection('users')
